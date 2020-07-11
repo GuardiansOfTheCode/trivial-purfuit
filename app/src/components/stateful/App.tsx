@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Button} from '@material-ui/core';
 import './App.css';
-import Players from '../components/Players/Players';
+import Players from '../stateless/Players/Players';
 
 const App = () => {
     const [gameState, setGameState] = useState({
