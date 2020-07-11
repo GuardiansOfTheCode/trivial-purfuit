@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Button} from '@material-ui/core';
 import './App.css';
-import Player from '../components/Player/Player';
+import Players from '../components/Players/Players';
 
 const App = () => {
     const [gameState, setGameState] = useState({
@@ -21,10 +21,7 @@ const App = () => {
 
     const players = showPlayers ?
         <div>
-            {gameState.players.map((player) => {
-                return <Player {...player}
-                               key={player.name}/>
-            })}
+            <Players players={gameState.players}/>
         </div> : null;
 
     return (
