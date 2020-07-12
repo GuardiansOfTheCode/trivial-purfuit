@@ -4,12 +4,12 @@ import {Paper} from '@material-ui/core';
 
 const player = (props: any) => {
     return (
-        <Paper className='Player'>
-            <p>Name: {props.name}  TokenColor: {props.tokenColor}</p>
+        <div className='Player'>
+            <p>Name: {props.name}</p>
             <input type='text'
                    onChange={props.changeName}
                    defaultValue={props.name}/>
-        </Paper>
+        </div>
     )
 }
 
