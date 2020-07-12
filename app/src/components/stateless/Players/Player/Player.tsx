@@ -12,7 +12,7 @@ const player = (props: any) => {
 
             <p>TokenColor: {props.tokenColor}</p>
             <input type='text'
-                   onChange={props.changeName}
+                   // onChange={props.changeName}
                    placeholder={'Enter token color'}/>
         </Grid>
     )
