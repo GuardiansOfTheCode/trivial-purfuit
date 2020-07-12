@@ -1,8 +1,18 @@
 import React from 'react';
-import Player from "./Player/Player";
+import {Grid} from '@material-ui/core';
+import './Players.css';
+import Player from './Player/Player';
 
 const players = (props: any) => {
-    return props.players.map((player: any) => <Player {...player} key={player.name}/>);
+    return (
+        <Grid className="Players"
+              container
+              direction="row"
+              justify="space-evenly"
+              alignItems="center">
+            {props.players.map((player: any) => <Player {...player} key={player.name}/>)}
+        </Grid>
+    )
 }
 
 export default players;

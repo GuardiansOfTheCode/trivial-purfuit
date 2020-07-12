@@ -1,37 +1,29 @@
 import React, {useState} from 'react';
-import {Button} from '@material-ui/core';
 import './App.css';
-import Players from '../stateless/Players/Players';
+import StartScreen from '../stateless/StartScreen/StartScreen';
 
 const App = () => {
-    const [gameState, setGameState] = useState({
+    const [showStartScreen, toggleShowStartScreen] = useState(true);
+
+    const [playerState, setPlayerState] = useState({
         players: [
-            {name: 'John', tokenColor: 'red'},
-            {name: 'Jack', tokenColor: 'yellow'},
-            {name: 'Jerry', tokenColor: 'green'},
-            {name: 'James', tokenColor: 'blue'}
+            {name: 'Player 1', tokenColor: 'red'},
+            {name: 'Player 2', tokenColor: 'yellow'},
+            {name: 'Player 3', tokenColor: 'green'},
+            {name: 'Player 4', tokenColor: 'blue'}
         ]
     });
 
-    const [showPlayers, toggleShowPlayers] = useState(true);
-
-    const toggleShowPlayersHandler = () => {
-        toggleShowPlayers(!showPlayers);
+    const toggleShowStartScreenHandler = () => {
+        toggleShowStartScreen(!showStartScreen);
     }
 
-    const players = showPlayers ?
-        <div>
-            <Players players={gameState.players}/>
-        </div> : null;
-
+    const startScreen = showStartScreen ?
+        <StartScreen players={playerState.players}
+                     clicked={() => toggleShowStartScreenHandler()}/> : null;
     return (
         <div className="App">
-            <h1>Welcome to Trivial Purfuit</h1>
-            <Button variant='contained'
-                    onClick={toggleShowPlayersHandler}>
-                Toggle Players
-            </Button>
-            {players}
+            {startScreen}
         </div>
     );
 }
