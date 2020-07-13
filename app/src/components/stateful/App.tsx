@@ -7,10 +7,30 @@ import {TokenColor} from "../../enums/TokenColor";
 
 const initialPlayerState = {
     players: [
-        {id: 1, name: 'Player 1', tokenColor: TokenColor.RED},
-        {id: 2, name: 'Player 2', tokenColor: TokenColor.BLUE},
-        {id: 3, name: 'Player 3', tokenColor: TokenColor.GREEN},
-        {id: 4, name: 'Player 4', tokenColor: TokenColor.YELLOW}
+        {
+            id: 1,
+            name: 'Player 1',
+            tokenColor: TokenColor.RED,
+            pos: 0                          // consider using an enum such as BoardPosition.START
+        },
+        {
+            id: 2,
+            name: 'Player 2',
+            tokenColor: TokenColor.BLUE,
+            pos: 0
+        },
+        {
+            id: 3,
+            name: 'Player 3',
+            tokenColor: TokenColor.GREEN,
+            pos: 0
+        },
+        {
+            id: 4,
+            name: 'Player 4',
+            tokenColor: TokenColor.YELLOW,
+            pos: 0
+        }
     ]
 }
 
