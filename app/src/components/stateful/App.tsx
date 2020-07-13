@@ -3,12 +3,12 @@ import {Container} from "@material-ui/core";
 import './App.css';
 import StartScreen from '../stateless/StartScreen/StartScreen';
 import GameBoard from '../stateless/GameBoard/GameBoard';
-import {initialPlayerState} from "../../models/states/InitialPlayerState"
+import {DEFAULT_PLAYERS, DEFAULT_GAME_BOARD} from "../../models/states/DefaultStates"
 
 const App = () => {
     const [showStartScreen, toggleShowStartScreen] = useState(true);
 
-    const [playerState, setPlayerState] = useState({...initialPlayerState});
+    const [playerState, setPlayerState] = useState({...DEFAULT_PLAYERS});
 
     const changeNameHandler = (event: any, id: number) => {
         const copyPlayers = [...playerState.players];
