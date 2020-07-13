@@ -5,9 +5,9 @@ export class Player {
     pos: number;
 
     constructor(id: number, name: string, tokenColor: string, pos: number) {
-        this.id = id;
-        this.name = name;
+        this.id         = id;
+        this.name       = name;
         this.tokenColor = tokenColor;
-        this.pos = pos;
+        this.pos        = pos;
     }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button, Grid, Paper} from "@material-ui/core";
+import propTypes from 'prop-types';
 
 const gameBoard = (props: any) => {
     return (
@@ -12,6 +13,11 @@ const gameBoard = (props: any) => {
             </Grid>
         </Paper>
     )
+}
+
+gameBoard.propTypes = {
+    players: propTypes.array,
+    clicked: propTypes.func
 }
 
 export default gameBoard;

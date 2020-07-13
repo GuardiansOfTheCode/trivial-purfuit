@@ -24,9 +24,9 @@ const startScreen = (props: any) => {
 }
 
 startScreen.propTypes = {
-    players: propTypes.array,
+    players:    propTypes.array,
     changeName: propTypes.func,
-    startGame: propTypes.func
+    startGame:  propTypes.func
 }
 
 export default startScreen;

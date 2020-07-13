@@ -23,11 +23,11 @@ const player = (props: any) => {
 }
 
 player.propTypes = {
-    id: propTypes.number,
-    name: propTypes.string,
+    id:         propTypes.number,
+    name:       propTypes.string,
     tokenColor: propTypes.string,
-    pos: propTypes.number,
-    key: propTypes.number,
+    pos:        propTypes.number,
+    key:        propTypes.number,
     changeName: propTypes.func
 }
 

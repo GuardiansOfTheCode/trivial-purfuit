@@ -21,7 +21,7 @@ const players = (props: any) => {
 }
 
 players.propTypes = {
-    players: propTypes.array,
+    players:    propTypes.array,
     changeName: propTypes.func
 }
 
