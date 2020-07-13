@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {Container} from "@material-ui/core";
 import './App.css';
-import StartScreen from '../stateless/StartScreen/StartScreen';
-import GameBoard from '../stateless/GameBoard/GameBoard';
-import {DEFAULT_PLAYERS, DEFAULT_GAME_BOARD} from "../../models/states/DefaultStates"
+import StartScreen from '../../components/StartScreen/StartScreen';
+import GameBoard from '../../components/GameBoard/GameBoard';
+import {DEFAULT_PLAYERS, DEFAULT_GAME_BOARD} from "../../common/models/states/DefaultStates"
 
 const App = () => {
     const [showStartScreen, toggleShowStartScreen] = useState(true);
