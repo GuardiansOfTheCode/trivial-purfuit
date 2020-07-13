@@ -3,36 +3,7 @@ import {Container} from "@material-ui/core";
 import './App.css';
 import StartScreen from '../stateless/StartScreen/StartScreen';
 import GameBoard from '../stateless/GameBoard/GameBoard';
-import {TokenColor} from "../../enums/TokenColor";
-
-const initialPlayerState = {
-    players: [
-        {
-            id: 1,
-            name: 'Player 1',
-            tokenColor: TokenColor.RED,
-            pos: 0                          // consider using an enum such as BoardPosition.START
-        },
-        {
-            id: 2,
-            name: 'Player 2',
-            tokenColor: TokenColor.BLUE,
-            pos: 0
-        },
-        {
-            id: 3,
-            name: 'Player 3',
-            tokenColor: TokenColor.GREEN,
-            pos: 0
-        },
-        {
-            id: 4,
-            name: 'Player 4',
-            tokenColor: TokenColor.YELLOW,
-            pos: 0
-        }
-    ]
-}
+import {initialPlayerState} from "../../models/states/InitialPlayerState"
 
 const App = () => {
     const [showStartScreen, toggleShowStartScreen] = useState(true);
