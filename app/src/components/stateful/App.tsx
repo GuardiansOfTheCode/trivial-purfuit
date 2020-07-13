@@ -20,7 +20,6 @@ const App = () => {
     const [playerState, setPlayerState] = useState({...initialPlayerState});
 
     const changeNameHandler = (event: any, id: number) => {
-        console.log(JSON.stringify(event.target.value));
         const copyPlayers = [...playerState.players];
         const playerIndex = copyPlayers.findIndex(player => player.id === id);
         const copyPlayer = copyPlayers[playerIndex];
@@ -33,18 +32,12 @@ const App = () => {
         toggleShowStartScreen(!showStartScreen);
     }
 
-    const resetToInitialPlayerStateHandler = () => {
-        console.log(JSON.stringify(playerState));
-        setPlayerState({...initialPlayerState});
-        console.log(JSON.stringify(playerState));
-    }
-
     const page = showStartScreen ?
         <StartScreen players={playerState.players}
                      changeName={changeNameHandler}
-                     startGame={() => toggleShowStartScreenHandler()}
-                     reset={() => resetToInitialPlayerStateHandler()} /> :
-        <GameBoard clicked={() => toggleShowStartScreenHandler()}/>;
+                     startGame={() => toggleShowStartScreenHandler()}/> :
+        <GameBoard players={playerState.players}
+                   clicked={() => toggleShowStartScreenHandler()}/>;
     return (
         <Container className="App">
             {page}

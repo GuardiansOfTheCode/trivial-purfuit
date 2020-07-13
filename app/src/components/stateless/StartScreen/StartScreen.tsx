@@ -1,17 +1,15 @@
 import React from 'react';
-import {Button, ButtonGroup, Divider, Paper} from "@material-ui/core";
+import {Button, Divider, Paper} from "@material-ui/core";
 import './StartScreen.css';
 import Players from '../Players/Players';
 
 const startScreen = (props: any) => {
-
     return (
         <Paper className="StartScreen"
                variant="outlined">
             <h1>Welcome To Trivial Purfuit</h1>
             <Players players={props.players}
-                     changeName={props.changeName}
-            />
+                     changeName={props.changeName}/>
 
             <Divider/>
 
