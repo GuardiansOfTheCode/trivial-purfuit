@@ -19,9 +19,7 @@ const App = () => {
         setPlayerState({players: copyPlayers});
     }
 
-    const toggleShowStartScreenHandler = () => {
-        toggleShowStartScreen(!showStartScreen);
-    }
+    const toggleShowStartScreenHandler = () => toggleShowStartScreen(!showStartScreen);
 
     const page = showStartScreen ?
         <StartScreen players={playerState.players}
