@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Button, Grid, Paper} from "@material-ui/core";
 import propTypes from 'prop-types';
 
-const gameBoard = (props: any) => {
+const GameBoard = (props: any) => {
+    useEffect(() => console.log(`[GameBoard] props: ${JSON.stringify(props)}`));
     return (
         <Paper>
             <Grid>
@@ -15,9 +16,9 @@ const gameBoard = (props: any) => {
     )
 }
 
-gameBoard.propTypes = {
+GameBoard.propTypes = {
     players: propTypes.array,
     clicked: propTypes.func
 }
 
-export default gameBoard;
+export default GameBoard;

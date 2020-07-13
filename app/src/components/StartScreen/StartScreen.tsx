@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Button, Divider, Paper} from "@material-ui/core";
 import './StartScreen.css';
 import Players from '../Players/Players';
 import propTypes from 'prop-types';
 
-const startScreen = (props: any) => {
+const StartScreen = (props: any) => {
+    useEffect(() => console.log(`[StartScreen] props: ${JSON.stringify(props)}`));
     return (
         <Paper className="StartScreen"
                variant="outlined">
@@ -23,10 +24,10 @@ const startScreen = (props: any) => {
     )
 }
 
-startScreen.propTypes = {
+StartScreen.propTypes = {
     players:    propTypes.array,
     changeName: propTypes.func,
     startGame:  propTypes.func
 }
 
-export default startScreen;
+export default StartScreen;

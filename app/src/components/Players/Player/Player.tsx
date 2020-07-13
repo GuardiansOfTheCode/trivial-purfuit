@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Grid} from '@material-ui/core';
 import './Player.css';
 import propTypes from 'prop-types';
 
-const player = (props: any) => {
+const Player = (props: any) => {
+    useEffect(() => console.log(`[Player] props: ${JSON.stringify(props)}`));
     return (
         <Grid className='Player'>
             <div>
@@ -22,7 +23,7 @@ const player = (props: any) => {
     )
 }
 
-player.propTypes = {
+Player.propTypes = {
     id:         propTypes.number,
     name:       propTypes.string,
     tokenColor: propTypes.string,
@@ -30,4 +31,4 @@ player.propTypes = {
     changeName: propTypes.func
 }
 
-export default player;
+export default Player;
