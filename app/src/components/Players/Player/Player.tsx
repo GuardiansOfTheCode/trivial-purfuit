@@ -1,6 +1,7 @@
 import React from 'react';
 import {Grid} from '@material-ui/core';
 import './Player.css';
+import propTypes from 'prop-types';
 
 const player = (props: any) => {
     return (
@@ -19,6 +20,15 @@ const player = (props: any) => {
             </div>
         </Grid>
     )
+}
+
+player.propTypes = {
+    id: propTypes.number,
+    name: propTypes.string,
+    tokenColor: propTypes.string,
+    pos: propTypes.number,
+    key: propTypes.number,
+    changeName: propTypes.func
 }
 
 export default player;

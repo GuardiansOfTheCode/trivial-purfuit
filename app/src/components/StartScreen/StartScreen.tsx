@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, Divider, Paper} from "@material-ui/core";
 import './StartScreen.css';
 import Players from '../Players/Players';
+import propTypes from 'prop-types';
 
 const startScreen = (props: any) => {
     return (
@@ -20,6 +21,12 @@ const startScreen = (props: any) => {
                     onClick={props.startGame}>Start Game</Button>
         </Paper>
     )
+}
+
+startScreen.propTypes = {
+    players: propTypes.array,
+    changeName: propTypes.func,
+    startGame: propTypes.func
 }
 
 export default startScreen;
