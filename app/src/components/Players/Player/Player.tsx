@@ -27,7 +27,6 @@ player.propTypes = {
     name:       propTypes.string,
     tokenColor: propTypes.string,
     pos:        propTypes.number,
-    key:        propTypes.number,
     changeName: propTypes.func
 }
 
