@@ -5,15 +5,18 @@ import './Player.css';
 const player = (props: any) => {
     return (
         <Grid className='Player'>
-            <p>Name: {props.name}</p>
-            <input type='text'
-                   onChange={props.changeName}
-                   placeholder={'Enter name'}/>
+            <div>
+                <p>Name: {props.name}</p>
+                <input type='text'
+                       onChange={props.changeName}
+                       placeholder={'Enter name'}/>
+            </div>
 
-            <p>TokenColor: {props.tokenColor}</p>
-            <input type='text'
-                   // onChange={props.changeName}
-                   placeholder={'Enter token color'}/>
+            <div>
+                <p>TokenColor: {props.tokenColor}</p>
+                <input type='text'
+                       placeholder={'Enter token color'}/>
+            </div>
         </Grid>
     )
 }
