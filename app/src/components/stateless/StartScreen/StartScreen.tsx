@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Divider, Paper} from "@material-ui/core";
+import {Button, ButtonGroup, Divider, Paper} from "@material-ui/core";
 import './StartScreen.css';
 import Players from '../Players/Players';
 
@@ -12,11 +12,14 @@ const startScreen = (props: any) => {
             <Players players={props.players}
                      changeName={props.changeName}
             />
+
             <Divider/>
+
             {/* The question/answer component will go here */}
+
             <Button variant="contained"
                     color="primary"
-                    onClick={props.clicked}>Start Game</Button>
+                    onClick={props.startGame}>Start Game</Button>
         </Paper>
     )
 }
