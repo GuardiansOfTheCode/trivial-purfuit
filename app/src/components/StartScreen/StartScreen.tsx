@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Divider, Paper} from '@material-ui/core';
 import propTypes from 'prop-types';
 import './StartScreen.css';
-import Players from '../Players/Players';
+import Players from './Players/Players';
 
 const StartScreen = (props: any) => {
     return (
