@@ -3,7 +3,6 @@ import {Button, Grid, Paper} from "@material-ui/core";
 import propTypes from 'prop-types';
 
 const GameBoard = (props: any) => {
-    useEffect(() => console.log(`[GameBoard] props: ${JSON.stringify(props)}`));
     return (
         <Paper>
             <Grid>

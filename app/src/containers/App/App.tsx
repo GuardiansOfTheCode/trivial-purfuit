@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import {Container} from "@material-ui/core";
 import './App.css';
+import Layout from '../../components/Layout/Layout';
 import StartScreen from '../../components/StartScreen/StartScreen';
-import GameBoard from '../../components/GameBoard/GameBoard';
+import GameBoard from '../GameBoard/GameBoard';
 import {DEFAULT_PLAYERS, DEFAULT_GAME_BOARD} from "../../common/models/states/DefaultStates"
 
 const App = () => {
@@ -29,7 +30,9 @@ const App = () => {
                    clicked={() => toggleShowStartScreenHandler()}/>;
     return (
         <Container className="App">
-            {page}
+            <Layout>
+                {page}
+            </Layout>
         </Container>
     );
 }

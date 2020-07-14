@@ -5,7 +5,6 @@ import Players from '../Players/Players';
 import propTypes from 'prop-types';
 
 const StartScreen = (props: any) => {
-    useEffect(() => console.log(`[StartScreen] props: ${JSON.stringify(props)}`));
     return (
         <Paper className="StartScreen"
                variant="outlined">

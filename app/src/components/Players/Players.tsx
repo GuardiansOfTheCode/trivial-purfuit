@@ -5,7 +5,6 @@ import Player from './Player/Player';
 import propTypes from 'prop-types';
 
 const Players = (props: any) => {
-    useEffect(() => console.log(`[Players] props: ${JSON.stringify(props)}`));
     return (
         <Grid className="Players"
               container
