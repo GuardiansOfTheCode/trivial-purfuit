@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 const Token = (props: any) => {
     return (
@@ -6,6 +7,11 @@ const Token = (props: any) => {
             Token
         </div>
     )
+}
+
+Token.propTypes = {
+    color: propTypes.string,
+    numCakeSlices: propTypes.number
 }
 
 export default Token;
