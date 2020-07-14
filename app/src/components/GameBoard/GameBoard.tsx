@@ -1,7 +1,7 @@
 import React from 'react';
-import {Button, Grid, Paper} from "@material-ui/core";
+import {Button, Grid, Paper} from '@material-ui/core';
 import propTypes from 'prop-types';
-import GameSpace from "./GameSpace/GameSpace";
+import GameSpace from './GameSpace/GameSpace';
 
 const GameBoard = (props: any) => {
     return (
@@ -126,12 +126,12 @@ const GameBoard = (props: any) => {
                 <GameSpace pos={44} players={props.players} topic='Topic4'/>
             </Grid>
         </Paper>
-    )
-}
+    );
+};
 
 GameBoard.propTypes = {
     players: propTypes.array,
     clicked: propTypes.func
-}
+};
 
 export default GameBoard;

@@ -20,22 +20,22 @@ const Player = (props: any) => {
                        placeholder={'Enter token color'}/>
             </div>
         </Grid>
-    )
-}
+    );
+};
 
 Player.propTypes = {
-    id:              propTypes.number,
-    name:            propTypes.string,
-    tokenColor:      propTypes.string,
-    pos:             propTypes.number,
-    numQuestions:    propTypes.number,
-    numCorrect:      propTypes.number,
+    id: propTypes.number,
+    name: propTypes.string,
+    tokenColor: propTypes.string,
+    pos: propTypes.number,
+    numQuestions: propTypes.number,
+    numCorrect: propTypes.number,
     totalCakeSlices: propTypes.number,
-    cakeSlice1:      propTypes.bool,
-    cakeSlice2:      propTypes.bool,
-    cakeSlice3:      propTypes.bool,
-    cakeSlice4:      propTypes.bool,
-    changeName:      propTypes.func
-}
+    cakeSlice1: propTypes.bool,
+    cakeSlice2: propTypes.bool,
+    cakeSlice3: propTypes.bool,
+    cakeSlice4: propTypes.bool,
+    changeName: propTypes.func
+};
 
 export default Player;

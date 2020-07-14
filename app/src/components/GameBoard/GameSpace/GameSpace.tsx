@@ -2,7 +2,7 @@ import React from 'react';
 import './GameSpace.css';
 import {Box, Grid} from '@material-ui/core';
 import propTypes from 'prop-types';
-import Token from "../Token/Token";
+import Token from '../Token/Token';
 
 // TODO: Make GameSpace a drop target
 const GameSpace = (props: any) => {
@@ -37,13 +37,13 @@ const GameSpace = (props: any) => {
                 {tokens}
             </Box>
         </Grid>
-    )
-}
+    );
+};
 
 GameSpace.propTypes = {
     pos: propTypes.number,
     players: propTypes.array,
     topic: propTypes.string
-}
+};
 
 export default GameSpace;
