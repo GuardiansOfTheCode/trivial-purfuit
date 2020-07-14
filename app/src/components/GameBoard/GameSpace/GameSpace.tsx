@@ -34,7 +34,9 @@ const GameSpace = (props: any) => {
         <Grid item>
             <Box className={'GameSpace ' + props.topic}>
                 {text}
-                {tokens}
+                <Box>
+                    {tokens}
+                </Box>
             </Box>
         </Grid>
     );
