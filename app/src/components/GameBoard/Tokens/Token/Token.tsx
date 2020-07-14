@@ -1,6 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
+// TODO: Make Token draggable and droppable
 const Token = (props: any) => {
     return (
         <div>
