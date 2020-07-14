@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import {Container} from "@material-ui/core";
+import {Container} from '@material-ui/core';
 import './App.css';
 import Layout from '../../components/Layout/Layout';
 import StartScreen from '../../components/StartScreen/StartScreen';
 import GameBoard from '../../components/GameBoard/GameBoard';
-import {DEFAULT_PLAYERS} from "../../common/models/states/DefaultStates"
+import {DEFAULT_PLAYERS} from '../../common/models/states/DefaultStates';
 
 const App = () => {
     const [showStartScreen, toggleShowStartScreen] = useState(true);
@@ -18,7 +18,7 @@ const App = () => {
         copyPlayer.name = event.target.value;
         copyPlayers[playerIndex] = copyPlayer;
         setPlayerState({players: copyPlayers});
-    }
+    };
 
     const toggleShowStartScreenHandler = () => toggleShowStartScreen(!showStartScreen);
 
@@ -36,6 +36,6 @@ const App = () => {
             </Layout>
         </Container>
     );
-}
+};
 
 export default App;
