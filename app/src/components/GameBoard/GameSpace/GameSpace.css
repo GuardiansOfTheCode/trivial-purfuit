@@ -1,0 +1,47 @@
+.GameSpace {
+    height: 4vw;
+    width:  4vw;
+}
+
+.Topic1 {
+    border-style: solid;
+    border-color: red;
+    border-width: 1vw;
+}
+
+.Topic2 {
+    border-style: solid;
+    border-color: darkorange;
+    border-width: 1vw;
+}
+
+.Topic3 {
+    border-style: solid;
+    border-color: gold;
+    border-width: 1vw;
+}
+
+.Topic4 {
+    border-style: solid;
+    border-color: green;
+    border-width: 1vw;
+}
+
+.RollAgain {
+    border-style: solid;
+    border-color: gray;
+    border-width: 1vw;
+}
+
+.Start {
+    border-style: solid;
+    border-color: indigo;
+    border-width: 1vw;
+}
+
+.NegativeSpace {
+    border-style: solid;
+    border-color: whitesmoke;
+    border-width: 1vw;
+    background-color: whitesmoke;
+}
