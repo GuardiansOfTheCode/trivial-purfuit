@@ -9,11 +9,13 @@ const Players = (props: any) => {
               direction="row"
               justify="space-evenly"
               alignItems="center">
-            {props.players.map((player: any) => {
-                return <Player {...player}
+            {
+                props.players.map((player: any) => {
+                    return <Player {...player}
                                key={player.id}
                                changeName={(event: any) => props.changeName(event, player.id)}/>
-            })}
+                })
+            }
         </Grid>
     )
 }
