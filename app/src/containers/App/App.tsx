@@ -4,7 +4,7 @@ import './App.css';
 import Layout from '../../components/Layout/Layout';
 import StartScreen from '../../components/StartScreen/StartScreen';
 import GameBoard from '../GameBoard/GameBoard';
-import {DEFAULT_PLAYERS, DEFAULT_GAME_BOARD} from "../../common/models/states/DefaultStates"
+import {DEFAULT_PLAYERS} from "../../common/models/states/DefaultStates"
 
 const App = () => {
     const [showStartScreen, toggleShowStartScreen] = useState(true);

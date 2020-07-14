@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Grid} from '@material-ui/core';
 import './Players.css';
 import Player from './Player/Player';

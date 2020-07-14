@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Button, Divider, Paper} from "@material-ui/core";
 import './StartScreen.css';
 import Players from '../Players/Players';

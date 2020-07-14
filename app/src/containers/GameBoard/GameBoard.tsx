@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Button, Grid, Paper} from "@material-ui/core";
 import propTypes from 'prop-types';
 
