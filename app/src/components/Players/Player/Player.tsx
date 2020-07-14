@@ -4,7 +4,6 @@ import './Player.css';
 import propTypes from 'prop-types';
 
 const Player = (props: any) => {
-    useEffect(() => console.log(`[Player] props: ${JSON.stringify(props)}`));
     return (
         <Grid className='Player'>
             <div>
