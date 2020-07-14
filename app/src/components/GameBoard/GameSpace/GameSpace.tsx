@@ -3,7 +3,7 @@ import './GameSpace.css';
 import {Box, Grid} from "@material-ui/core";
 
 const GameSpace = (props: any) => {
-    let text: string | null = null;
+    let text: string | null;
     switch (props.topic) {
         case 'Start':
             text = 'Start';
@@ -11,6 +11,9 @@ const GameSpace = (props: any) => {
         case 'RollAgain':
             text = 'RollAgain';
             break;
+        default:
+            text = null;
+            //make not droppable
     }
 
     return (

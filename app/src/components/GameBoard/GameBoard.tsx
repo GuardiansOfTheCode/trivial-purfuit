@@ -1,17 +1,22 @@
 import React from 'react';
-import {Grid, Paper} from "@material-ui/core";
+import {Button, Grid, Paper} from "@material-ui/core";
 import propTypes from 'prop-types';
 import GameSpace from "./GameSpace/GameSpace";
 
 const GameBoard = (props: any) => {
     return (
         <Paper>
-            {/*<Grid container>*/}
-            {/*    <h1>Game Board</h1>*/}
-            {/*    <Button variant="contained"*/}
-            {/*            color="primary"*/}
-            {/*            onClick={props.clicked}>Quit Game</Button>*/}
-            {/*</Grid>*/}
+
+            {/*move this logic into the navbar*/}
+            <div>
+                <h1>Trivial Pursuit</h1>
+                <Button variant='contained'
+                        color='primary'
+                        onClick={props.clicked}>
+                    Quit Game
+                </Button>
+            </div>
+
             <Grid container justify='center'>
                 <GameSpace topic='Topic1'/>
                 <GameSpace topic='Topic2'/>

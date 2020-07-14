@@ -1,13 +1,13 @@
 import React from 'react';
-import Aux from '../../hoc/Aux';
+import Auxiliary from '../../hoc/Auxiliary';
 
 const Layout = (props: any) => {
     return (
-        <Aux>
+        <Auxiliary>
             <main>
                 {props.children}
             </main>
-        </Aux>
+        </Auxiliary>
     )
 };
 
