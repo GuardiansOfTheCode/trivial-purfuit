@@ -28,6 +28,7 @@ const App = () => {
                      startGame={() => toggleShowStartScreenHandler()}/> :
         <GameBoard players={playerState.players}
                    clicked={() => toggleShowStartScreenHandler()}/>;
+
     return (
         <Container className="App">
             <Layout>

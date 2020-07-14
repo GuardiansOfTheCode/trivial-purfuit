@@ -1,13 +1,11 @@
 import React from 'react';
 import {Grid} from '@material-ui/core';
-import './Players.css';
-import Player from './Player/Player';
 import propTypes from 'prop-types';
+import Player from './Player/Player';
 
 const Players = (props: any) => {
     return (
-        <Grid className="Players"
-              container
+        <Grid container
               direction="row"
               justify="space-evenly"
               alignItems="center">
