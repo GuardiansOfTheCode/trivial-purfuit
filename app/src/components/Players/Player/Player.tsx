@@ -28,8 +28,7 @@ Player.propTypes = {
     name:       propTypes.string,
     tokenColor: propTypes.string,
     pos:        propTypes.number,
-    changeName: propTypes.func,
-    cakeSlices: propTypes.number
+    changeName: propTypes.func
 }
 
 export default Player;
