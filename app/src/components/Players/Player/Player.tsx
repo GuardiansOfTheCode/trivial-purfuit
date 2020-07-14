@@ -24,11 +24,18 @@ const Player = (props: any) => {
 }
 
 Player.propTypes = {
-    id:         propTypes.number,
-    name:       propTypes.string,
-    tokenColor: propTypes.string,
-    pos:        propTypes.number,
-    changeName: propTypes.func
+    id:              propTypes.number,
+    name:            propTypes.string,
+    tokenColor:      propTypes.string,
+    pos:             propTypes.number,
+    numQuestions:    propTypes.number,
+    numCorrect:      propTypes.number,
+    totalCakeSlices: propTypes.number,
+    cakeSlice1:      propTypes.bool,
+    cakeSlice2:      propTypes.bool,
+    cakeSlice3:      propTypes.bool,
+    cakeSlice4:      propTypes.bool,
+    changeName:      propTypes.func
 }
 
 export default Player;

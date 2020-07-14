@@ -14,7 +14,7 @@ const StartScreen = (props: any) => {
 
             <Divider/>
 
-            {/* The question/answer component will go here */}
+            {/*TODO: Question/Answer component*/}
 
             <Button variant="contained"
                     color="primary"

@@ -18,6 +18,8 @@ const GameSpace = (props: any) => {
             //make not droppable
     }
 
+    const tokensOnSpace: boolean = false;
+
     return (
         <Grid item>
             <Box className={'GameSpace ' + props.topic}>
