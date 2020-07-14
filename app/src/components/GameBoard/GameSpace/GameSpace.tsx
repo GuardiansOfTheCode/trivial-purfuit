@@ -1,13 +1,22 @@
 import React from 'react';
-import {Box, Paper} from "@material-ui/core";
-import propTypes from 'prop-types';
 import './GameSpace.css';
+import {Box, Grid} from "@material-ui/core";
 
 const GameSpace = (props: any) => {
+    let text: string | null = null;
+    switch (props.topic) {
+        case 'Start':
+            text = 'Start';
+            break;
+        case 'RollAgain':
+            text = 'RollAgain';
+            break;
+    }
+
     return (
-        <Paper>
-            <Box className={'GameSpace ' + props.topic}>Oi cunt</Box>
-        </Paper>
+        <Grid item>
+            <Box className={'GameSpace ' + props.topic}>{text}</Box>
+        </Grid>
     )
 }
 
