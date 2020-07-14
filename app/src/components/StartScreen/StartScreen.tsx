@@ -1,8 +1,8 @@
 import React from 'react';
-import {Button, Divider, Paper} from "@material-ui/core";
+import {Button, Divider, Paper} from '@material-ui/core';
 import propTypes from 'prop-types';
 import './StartScreen.css';
-import Players from '../Players/Players';
+import Players from './Players/Players';
 
 const StartScreen = (props: any) => {
     return (
@@ -14,19 +14,19 @@ const StartScreen = (props: any) => {
 
             <Divider/>
 
-            {/* The question/answer component will go here */}
+            {/*TODO: Question/Answer component*/}
 
             <Button variant="contained"
                     color="primary"
                     onClick={props.startGame}>Start Game</Button>
         </Paper>
-    )
-}
+    );
+};
 
 StartScreen.propTypes = {
-    players:    propTypes.array,
+    players: propTypes.array,
     changeName: propTypes.func,
-    startGame:  propTypes.func
-}
+    startGame: propTypes.func
+};
 
 export default StartScreen;

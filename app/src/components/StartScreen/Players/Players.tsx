@@ -9,18 +9,20 @@ const Players = (props: any) => {
               direction="row"
               justify="space-evenly"
               alignItems="center">
-            {props.players.map((player: any) => {
-                return <Player {...player}
-                               key={player.id}
-                               changeName={(event: any) => props.changeName(event, player.id)}/>
-            })}
+            {
+                props.players.map((player: any) => {
+                    return <Player {...player}
+                                   key={player.id}
+                                   changeName={(event: any) => props.changeName(event, player.id)}/>;
+                })
+            }
         </Grid>
-    )
-}
+    );
+};
 
 Players.propTypes = {
-    players:    propTypes.array,
+    players: propTypes.array,
     changeName: propTypes.func
-}
+};
 
 export default Players;
