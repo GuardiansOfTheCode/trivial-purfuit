@@ -1,24 +1,32 @@
 import React from 'react';
 import {Button, Divider, Paper} from "@material-ui/core";
+import propTypes from 'prop-types';
 import './StartScreen.css';
 import Players from '../Players/Players';
 
-const startScreen = (props: any) => {
-
+const StartScreen = (props: any) => {
     return (
         <Paper className="StartScreen"
                variant="outlined">
             <h1>Welcome To Trivial Purfuit</h1>
             <Players players={props.players}
-                     changeName={props.changeName}
-            />
+                     changeName={props.changeName}/>
+
             <Divider/>
+
             {/* The question/answer component will go here */}
+
             <Button variant="contained"
                     color="primary"
-                    onClick={props.clicked}>Start Game</Button>
+                    onClick={props.startGame}>Start Game</Button>
         </Paper>
     )
 }
 
-export default startScreen;
+StartScreen.propTypes = {
+    players:    propTypes.array,
+    changeName: propTypes.func,
+    startGame:  propTypes.func
+}
+
+export default StartScreen;
