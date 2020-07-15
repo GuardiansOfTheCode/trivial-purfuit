@@ -4,20 +4,27 @@ import './App.css';
 import Layout from '../../components/Layout/Layout';
 import StartScreen from '../../components/StartScreen/StartScreen';
 import GameBoard from '../../components/GameBoard/GameBoard';
-import {DEFAULT_PLAYERS} from '../../common/models/states/DefaultStates';
+import {PlayerStateService} from '../../common/services/PlayerStateService';
+
+const playerStateService: PlayerStateService = PlayerStateService.instance;
 
 const App = () => {
     const [showStartScreen, toggleShowStartScreen] = useState(true);
 
-    const [playerState, setPlayerState] = useState({...DEFAULT_PLAYERS});
+    const [playerState, setPlayerState] = useState({
+        players: playerStateService.playerState
+    });
 
     const changeNameHandler = (event: any, id: number) => {
         const copyPlayers = [...playerState.players];
         const playerIndex = copyPlayers.findIndex(player => player.id === id);
         const copyPlayer = copyPlayers[playerIndex];
+
         copyPlayer.name = event.target.value;
         copyPlayers[playerIndex] = copyPlayer;
-        setPlayerState({players: copyPlayers});
+
+        playerStateService.playerState = copyPlayers;
+        setPlayerState({players: playerStateService.playerState});
     };
 
     // TODO: Consider replacing this show/hide functionality with routing
