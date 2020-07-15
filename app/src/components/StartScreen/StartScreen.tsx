@@ -1,8 +1,8 @@
-import React from 'react';
 import {Button, Divider, Paper} from '@material-ui/core';
 import propTypes from 'prop-types';
-import './StartScreen.css';
+import React from 'react';
 import Players from './Players/Players';
+import './StartScreen.css';
 
 const StartScreen = (props: any) => {
     return (

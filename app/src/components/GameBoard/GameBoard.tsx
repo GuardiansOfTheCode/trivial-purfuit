@@ -1,6 +1,6 @@
-import React from 'react';
 import {Button, Grid, Paper} from '@material-ui/core';
 import propTypes from 'prop-types';
+import React from 'react';
 import GameSpace from './GameSpace/GameSpace';
 
 const GameBoard = (props: any) => {

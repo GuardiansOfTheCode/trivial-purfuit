@@ -1,30 +1,58 @@
+import {Button, Container, Grid} from '@material-ui/core';
 import React, {useState} from 'react';
-import {Button, Container} from '@material-ui/core';
-import './App.css';
-import Layout from '../../components/Layout/Layout';
-import StartScreen from '../../components/StartScreen/StartScreen';
-import GameBoard from '../../components/GameBoard/GameBoard';
+import {QuestionDao} from '../../common/dao/QuestionDao';
+import {Question} from '../../common/models/Question';
 import {PlayerStateService} from '../../common/services/PlayerStateService';
 import {QuestionService} from '../../common/services/QuestionService';
-import {Question} from '../../common/models/Question';
-import {QuestionDao} from '../../common/dao/QuestionDao';
+import GameBoard from '../../components/GameBoard/GameBoard';
+import Layout from '../../components/Layout/Layout';
+import StartScreen from '../../components/StartScreen/StartScreen';
+import './App.css';
 
 const playerStateService: PlayerStateService = PlayerStateService.instance;
 const questionService: QuestionService = QuestionService.instance;
 
 // TODO: Remove/edit after skeletal increment demo
-const demoDB: Question[] = QuestionDao.instance.demoDB;
+const questionDao: QuestionDao = QuestionDao.instance;
 
 const App = () => {
     // TODO: Remove/edit after skeletal increment demo
     const demoInsertQuestionHandler = () => {
-        console.log(`[demoDB] = ${JSON.stringify(demoDB)}`);
         const demoQuestion: Question = new Question(
             'What year was the Declaration of Independence signed?',
             '1776',
             '1992,1999,1990');
+        console.log(`[App] inserting question into demoDB...`);
         questionService.insertQuestion(demoQuestion);
-        console.log(`[demoDB] = ${JSON.stringify(demoDB)}`);
+        console.log(`[App] inserting question into demoDB - COMPLETE`);
+    };
+
+    // TODO: Remove/edit after skeletal increment demo
+    const showDemoDatabaseContentsHandler = () => {
+        console.log(`[App] printing demoDB...`);
+        questionDao.printDemoDB();
+        console.log(`[App] printing demoDB - COMPLETE`);
+    };
+
+    // TODO: Remove/edit after skeletal increment demo
+    const deleteItemDemoDBHandler = () => {
+        console.log(`[App] deleting last item...`);
+        questionDao.delete();
+        console.log(`[App] deleting last item - COMPLETE`);
+    };
+
+    // TODO: Remove/edit after skeletal increment demo
+    const getFirstItemFromDemoDBHandler = () => {
+        console.log(`[App] getting first item...`);
+        const firstItem: Question = questionDao.getFirstItem();
+        console.log(`[App] got first item: ${JSON.stringify(firstItem)}`);
+    };
+
+    // TODO: Remove/edit after skeletal increment demo
+    let dieValue: number = 0;
+    const rollDieHandler = () => {
+        dieValue = Math.ceil(Math.random() * 6);
+        console.log(`[App] new die value: ${dieValue}`);
     };
 
     const [showStartScreen, toggleShowStartScreen] = useState(true);
@@ -46,7 +74,10 @@ const App = () => {
     };
 
     // TODO: Consider replacing this show/hide functionality with routing
-    const toggleShowStartScreenHandler = () => toggleShowStartScreen(!showStartScreen);
+    const toggleShowStartScreenHandler = () => {
+        console.log(!showStartScreen ? '[App] Show Startscreen' : '[App] Show Gameboard');  // TODO: Remove logging
+        toggleShowStartScreen(!showStartScreen);
+    };
 
     const page = showStartScreen ?
         <StartScreen players={playerState.players}
@@ -61,11 +92,49 @@ const App = () => {
                 {page}
 
                 {/*TODO: Remove/edit after skeletal increment demo*/}
-                <Button variant={'contained'}
-                        color={'secondary'}
-                        onClick={demoInsertQuestionHandler}>
-                    DEMO INSERT QUESTION
-                </Button>
+                <Grid container
+                      direction={'row'}
+                      justify={'space-between'}>
+                    <Grid item xs={12}>
+                        <h3>Testing for Skeletal Increment Demo:</h3>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <Button variant={'contained'}
+                                color={'default'}
+                                onClick={demoInsertQuestionHandler}>
+                            DEMO: Insert Question
+                        </Button>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <Button variant={'contained'}
+                                color={'default'}
+                                onClick={showDemoDatabaseContentsHandler}>
+                            DEMO: Log Database Contents
+                        </Button>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <Button variant={'contained'}
+                                color={'default'}
+                                onClick={deleteItemDemoDBHandler}>
+                            DEMO: Delete Item From Database
+                        </Button>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <Button variant={'contained'}
+                                color={'default'}
+                                onClick={getFirstItemFromDemoDBHandler}>
+                            DEMO: Get Item From Database
+                        </Button>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <Button variant={'contained'}
+                                color={'default'}
+                                onClick={rollDieHandler}>
+                            DEMO: Roll Die
+                        </Button>
+                    </Grid>
+                </Grid>
+
             </Layout>
         </Container>
     );
