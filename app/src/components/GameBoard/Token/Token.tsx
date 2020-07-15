@@ -1,6 +1,6 @@
-import React from 'react';
-import propTypes from 'prop-types';
 import BorderOuterIcon from '@material-ui/icons/BorderOuter';
+import propTypes from 'prop-types';
+import React from 'react';
 
 // TODO: Make Token draggable and droppable
 const Token = (props: any) => {
