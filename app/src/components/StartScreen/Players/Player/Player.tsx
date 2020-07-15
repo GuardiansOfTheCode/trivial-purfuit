@@ -26,7 +26,7 @@ Player.propTypes = {
     id: propTypes.number,
     name: propTypes.string,
     tokenColor: propTypes.string,
-    pos: propTypes.number,
+    pos: propTypes.array,
     numQuestions: propTypes.number,
     numCorrect: propTypes.number,
     totalCakeSlices: propTypes.number,

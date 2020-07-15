@@ -7,41 +7,47 @@
     border-style: solid;
     border-color: red;
     border-width: 1vw;
+    background-color: ghostwhite;
 }
 
 .Topic2 {
     border-style: solid;
     border-color: darkorange;
     border-width: 1vw;
+    background-color: ghostwhite;
 }
 
 .Topic3 {
     border-style: solid;
     border-color: gold;
     border-width: 1vw;
+    background-color: ghostwhite;
 }
 
 .Topic4 {
     border-style: solid;
     border-color: green;
     border-width: 1vw;
+    background-color: ghostwhite;
 }
 
 .RollAgain {
     border-style: solid;
     border-color: gray;
     border-width: 1vw;
+    background-color: ghostwhite;
 }
 
 .Start {
     border-style: solid;
     border-color: indigo;
     border-width: 1vw;
+    background-color: ghostwhite;
 }
 
 .NegativeSpace {
     border-style: solid;
-    border-color: whitesmoke;
+    border-color: ghostwhite;
     border-width: 1vw;
-    background-color: whitesmoke;
+    background-color: ghostwhite;
 }
