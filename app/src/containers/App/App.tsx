@@ -20,6 +20,7 @@ const App = () => {
         setPlayerState({players: copyPlayers});
     };
 
+    // TODO: Consider replacing this show/hide functionality with routing
     const toggleShowStartScreenHandler = () => toggleShowStartScreen(!showStartScreen);
 
     const page = showStartScreen ?
