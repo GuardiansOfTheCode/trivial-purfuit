@@ -19,7 +19,7 @@ const GameBoard = (props: any) => {
 
             {/*TODO: Consider using context rather than passing in props to each GameSpace component*/}
             <Grid container justify='center'>
-                <GameSpace pos={[0,0]} players={props.players} topic='Topic1'/>
+                <GameSpace pos={[0,0]} players={props.players} topic='Topic1' cakeSlice1={true}/>
                 <GameSpace pos={[0,1]} players={props.players} topic='Topic2'/>
                 <GameSpace pos={[0,2]} players={props.players} topic='RollAgain'/>
                 <GameSpace pos={[0,3]} players={props.players} topic='Topic3'/>
@@ -27,7 +27,7 @@ const GameBoard = (props: any) => {
                 <GameSpace pos={[0,5]} players={props.players} topic='Topic1'/>
                 <GameSpace pos={[0,6]} players={props.players} topic='RollAgain'/>
                 <GameSpace pos={[0,7]} players={props.players} topic='Topic2'/>
-                <GameSpace pos={[0,8]} players={props.players} topic='Topic3'/>
+                <GameSpace pos={[0,8]} players={props.players} topic='Topic3' cakeSlice2={true}/>
             </Grid>
 
             <Grid container justify='center'>
@@ -115,7 +115,7 @@ const GameBoard = (props: any) => {
             </Grid>
 
             <Grid container justify='center'>
-                <GameSpace pos={[8,0]} players={props.players} topic='Topic2'/>
+                <GameSpace pos={[8,0]} players={props.players} topic='Topic2' cakeSlice3={true}/>
                 <GameSpace pos={[8,1]} players={props.players} topic='Topic3'/>
                 <GameSpace pos={[8,2]} players={props.players} topic='RollAgain'/>
                 <GameSpace pos={[8,3]} players={props.players} topic='Topic4'/>
@@ -123,7 +123,7 @@ const GameBoard = (props: any) => {
                 <GameSpace pos={[8,5]} players={props.players} topic='Topic2'/>
                 <GameSpace pos={[8,6]} players={props.players} topic='RollAgain'/>
                 <GameSpace pos={[8,7]} players={props.players} topic='Topic3'/>
-                <GameSpace pos={[8,8]} players={props.players} topic='Topic4'/>
+                <GameSpace pos={[8,8]} players={props.players} topic='Topic4' cakeSlice4={true}/>
             </Grid>
         </Paper>
     );

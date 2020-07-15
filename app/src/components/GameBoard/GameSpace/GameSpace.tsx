@@ -45,7 +45,11 @@ const GameSpace = (props: any) => {
 GameSpace.propTypes = {
     pos: propTypes.array,
     players: propTypes.array,
-    topic: propTypes.string
+    topic: propTypes.string,
+    cakeSlice1: propTypes.bool,
+    cakeSlice2: propTypes.bool,
+    cakeSlice3: propTypes.bool,
+    cakeSlice4: propTypes.bool
 };
 
 export default GameSpace;
