@@ -1,14 +1,32 @@
 import React, {useState} from 'react';
-import {Container} from '@material-ui/core';
+import {Button, Container} from '@material-ui/core';
 import './App.css';
 import Layout from '../../components/Layout/Layout';
 import StartScreen from '../../components/StartScreen/StartScreen';
 import GameBoard from '../../components/GameBoard/GameBoard';
 import {PlayerStateService} from '../../common/services/PlayerStateService';
+import {QuestionService} from '../../common/services/QuestionService';
+import {Question} from '../../common/models/Question';
+import {QuestionDao} from '../../common/dao/QuestionDao';
 
 const playerStateService: PlayerStateService = PlayerStateService.instance;
+const questionService: QuestionService = QuestionService.instance;
+
+// TODO: Remove/edit after skeletal increment demo
+const demoDB: Question[] = QuestionDao.instance.demoDB;
 
 const App = () => {
+    // TODO: Remove/edit after skeletal increment demo
+    const demoInsertQuestionHandler = () => {
+        console.log(`[demoDB] = ${JSON.stringify(demoDB)}`);
+        const demoQuestion: Question = new Question(
+            'What year was the Declaration of Independence signed?',
+            '1776',
+            '1992,1999,1990');
+        questionService.insertQuestion(demoQuestion);
+        console.log(`[demoDB] = ${JSON.stringify(demoDB)}`);
+    };
+
     const [showStartScreen, toggleShowStartScreen] = useState(true);
 
     const [playerState, setPlayerState] = useState({
@@ -41,6 +59,13 @@ const App = () => {
         <Container className="App">
             <Layout>
                 {page}
+
+                {/*TODO: Remove/edit after skeletal increment demo*/}
+                <Button variant={'contained'}
+                        color={'secondary'}
+                        onClick={demoInsertQuestionHandler}>
+                    DEMO INSERT QUESTION
+                </Button>
             </Layout>
         </Container>
     );
