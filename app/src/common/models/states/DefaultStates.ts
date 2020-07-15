@@ -9,7 +9,3 @@ export const DEFAULT_PLAYERS = {
         new Player(4, 'Player 4', TokenColor.YELLOW, [4,4], 0, 0, 0, false, false, false, false)
     ]
 };
-
-export const DEFAULT_GAME_BOARD = {
-    testField: 'Hello World'
-};
