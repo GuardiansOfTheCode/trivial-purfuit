@@ -2,7 +2,7 @@ export class Player {
     id: number;
     name: string;
     tokenColor: string;
-    pos: number;
+    pos: number[];
     numQuestions: number;
     numCorrect: number;
     totalCakeSlices: number;
@@ -14,7 +14,7 @@ export class Player {
     constructor(id: number,
                 name: string,
                 tokenColor: string,
-                pos: number,
+                pos: number[],
                 numQuestions: number,
                 numCorrect: number,
                 totalCakeSlices: number,

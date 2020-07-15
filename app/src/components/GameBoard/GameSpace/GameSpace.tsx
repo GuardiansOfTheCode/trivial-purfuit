@@ -12,7 +12,7 @@ const GameSpace = (props: any) => {
             text = 'Start';
             break;
         case 'RollAgain':
-            text = 'RollAgain';
+            text = 'Roll Again';
             break;
         case 'NegativeSpace':
             // TODO: Make the GameSpace non-droppable
@@ -24,7 +24,7 @@ const GameSpace = (props: any) => {
 
     const tokens = props.players !== undefined ?
         props.players.map((player: any) => {
-            return player.pos === props.pos ?
+            return player.pos[0] === props.pos[0] && player.pos[1] === props.pos[1] ?
                 <Token key={player.id}
                        color={player.tokenColor}
                        totalCakeSlices={player.totalCakeSlices}/> : null;
@@ -34,16 +34,22 @@ const GameSpace = (props: any) => {
         <Grid item>
             <Box className={'GameSpace ' + props.topic}>
                 {text}
-                {tokens}
+                <Box>
+                    {tokens}
+                </Box>
             </Box>
         </Grid>
     );
 };
 
 GameSpace.propTypes = {
-    pos: propTypes.number,
+    pos: propTypes.array,
     players: propTypes.array,
-    topic: propTypes.string
+    topic: propTypes.string,
+    cakeSlice1: propTypes.bool,
+    cakeSlice2: propTypes.bool,
+    cakeSlice3: propTypes.bool,
+    cakeSlice4: propTypes.bool
 };
 
 export default GameSpace;

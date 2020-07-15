@@ -19,111 +19,111 @@ const GameBoard = (props: any) => {
 
             {/*TODO: Consider using context rather than passing in props to each GameSpace component*/}
             <Grid container justify='center'>
-                <GameSpace pos={1} players={props.players} topic='Topic1'/>
-                <GameSpace pos={2} players={props.players} topic='Topic2'/>
-                <GameSpace pos={3} players={props.players} topic='RollAgain'/>
-                <GameSpace pos={4} players={props.players} topic='Topic3'/>
-                <GameSpace pos={5} players={props.players} topic='Topic4'/>
-                <GameSpace pos={6} players={props.players} topic='Topic1'/>
-                <GameSpace pos={7} players={props.players} topic='RollAgain'/>
-                <GameSpace pos={8} players={props.players} topic='Topic2'/>
-                <GameSpace pos={9} players={props.players} topic='Topic3'/>
+                <GameSpace pos={[0, 0]} players={props.players} topic='CakeSpace1' cakeSlice1={true}/>
+                <GameSpace pos={[0, 1]} players={props.players} topic='Topic2'/>
+                <GameSpace pos={[0, 2]} players={props.players} topic='RollAgain'/>
+                <GameSpace pos={[0, 3]} players={props.players} topic='Topic3'/>
+                <GameSpace pos={[0, 4]} players={props.players} topic='Topic4'/>
+                <GameSpace pos={[0, 5]} players={props.players} topic='Topic1'/>
+                <GameSpace pos={[0, 6]} players={props.players} topic='RollAgain'/>
+                <GameSpace pos={[0, 7]} players={props.players} topic='Topic2'/>
+                <GameSpace pos={[0, 8]} players={props.players} topic='CakeSpace3' cakeSlice3={true}/>
             </Grid>
 
             <Grid container justify='center'>
-                <GameSpace pos={10} players={props.players} topic='Topic4'/>
+                <GameSpace pos={[1, 0]} players={props.players} topic='Topic2'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
-                <GameSpace pos={11} players={props.players} topic='Topic4'/>
+                <GameSpace pos={[1, 4]} players={props.players} topic='Topic2'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
-                <GameSpace pos={12} players={props.players} topic='Topic2'/>
+                <GameSpace pos={[1, 8]} players={props.players} topic='Topic2'/>
             </Grid>
 
             <Grid container justify='center'>
-                <GameSpace pos={13} players={props.players} topic='RollAgain'/>
+                <GameSpace pos={[2, 0]} players={props.players} topic='RollAgain'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
-                <GameSpace pos={14} players={props.players} topic='Topic4'/>
+                <GameSpace pos={[2, 4]} players={props.players} topic='Topic3'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
-                <GameSpace pos={15} players={props.players} topic='RollAgain'/>
+                <GameSpace pos={[2, 8]} players={props.players} topic='RollAgain'/>
             </Grid>
 
             <Grid container justify='center'>
-                <GameSpace pos={16} players={props.players} topic='Topic1'/>
+                <GameSpace pos={[3, 0]} players={props.players} topic='Topic1'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
-                <GameSpace pos={17} players={props.players} topic='Topic4'/>
+                <GameSpace pos={[3, 4]} players={props.players} topic='Topic3'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
-                <GameSpace pos={18} players={props.players} topic='Topic1'/>
+                <GameSpace pos={[3, 8]} players={props.players} topic='Topic4'/>
             </Grid>
 
             <Grid container justify='center'>
-                <GameSpace pos={19} players={props.players} topic='Topic1'/>
-                <GameSpace pos={20} players={props.players} topic='Topic2'/>
-                <GameSpace pos={21} players={props.players} topic='Topic3'/>
-                <GameSpace pos={22} players={props.players} topic='Topic4'/>
-                <GameSpace pos={0} players={props.players} topic='Start'/>
-                <GameSpace pos={23} players={props.players} topic='Topic2'/>
-                <GameSpace pos={24} players={props.players} topic='Topic3'/>
-                <GameSpace pos={25} players={props.players} topic='Topic4'/>
-                <GameSpace pos={26} players={props.players} topic='Topic1'/>
+                <GameSpace pos={[4, 0]} players={props.players} topic='Topic2'/>
+                <GameSpace pos={[4, 1]} players={props.players} topic='Topic3'/>
+                <GameSpace pos={[4, 2]} players={props.players} topic='Topic4'/>
+                <GameSpace pos={[4, 3]} players={props.players} topic='Topic1'/>
+                <GameSpace pos={[4, 4]} players={props.players} topic='Start'/>
+                <GameSpace pos={[4, 5]} players={props.players} topic='Topic2'/>
+                <GameSpace pos={[4, 6]} players={props.players} topic='Topic3'/>
+                <GameSpace pos={[4, 7]} players={props.players} topic='Topic4'/>
+                <GameSpace pos={[4, 8]} players={props.players} topic='Topic1'/>
             </Grid>
 
             <Grid container justify='center'>
-                <GameSpace pos={27} players={props.players} topic='Topic1'/>
+                <GameSpace pos={[5, 0]} players={props.players} topic='Topic1'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
-                <GameSpace pos={28} players={props.players} topic='Topic4'/>
+                <GameSpace pos={[5, 4]} players={props.players} topic='Topic4'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
-                <GameSpace pos={29} players={props.players} topic='Topic1'/>
+                <GameSpace pos={[5, 8]} players={props.players} topic='Topic1'/>
             </Grid>
 
             <Grid container justify='center'>
-                <GameSpace pos={30} players={props.players} topic='RollAgain'/>
+                <GameSpace pos={[6, 0]} players={props.players} topic='RollAgain'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
-                <GameSpace pos={31} players={props.players} topic='Topic4'/>
+                <GameSpace pos={[6, 4]} players={props.players} topic='Topic4'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
-                <GameSpace pos={32} players={props.players} topic='RollAgain'/>
+                <GameSpace pos={[6, 8]} players={props.players} topic='RollAgain'/>
             </Grid>
 
             <Grid container justify='center'>
-                <GameSpace pos={33} players={props.players} topic='Topic1'/>
+                <GameSpace pos={[7, 0]} players={props.players} topic='Topic1'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
-                <GameSpace pos={34} players={props.players} topic='Topic4'/>
+                <GameSpace pos={[7, 4]} players={props.players} topic='Topic4'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
                 <GameSpace topic='NegativeSpace'/>
-                <GameSpace pos={35} players={props.players} topic='Topic1'/>
+                <GameSpace pos={[7, 8]} players={props.players} topic='Topic1'/>
             </Grid>
 
             <Grid container justify='center'>
-                <GameSpace pos={36} players={props.players} topic='Topic2'/>
-                <GameSpace pos={37} players={props.players} topic='Topic3'/>
-                <GameSpace pos={38} players={props.players} topic='RollAgain'/>
-                <GameSpace pos={39} players={props.players} topic='Topic4'/>
-                <GameSpace pos={40} players={props.players} topic='Topic1'/>
-                <GameSpace pos={41} players={props.players} topic='Topic2'/>
-                <GameSpace pos={42} players={props.players} topic='RollAgain'/>
-                <GameSpace pos={43} players={props.players} topic='Topic3'/>
-                <GameSpace pos={44} players={props.players} topic='Topic4'/>
+                <GameSpace pos={[8, 0]} players={props.players} topic='CakeSpace3' cakeSlice3={true}/>
+                <GameSpace pos={[8, 1]} players={props.players} topic='Topic3'/>
+                <GameSpace pos={[8, 2]} players={props.players} topic='RollAgain'/>
+                <GameSpace pos={[8, 3]} players={props.players} topic='Topic4'/>
+                <GameSpace pos={[8, 4]} players={props.players} topic='Topic1'/>
+                <GameSpace pos={[8, 5]} players={props.players} topic='Topic2'/>
+                <GameSpace pos={[8, 6]} players={props.players} topic='RollAgain'/>
+                <GameSpace pos={[8, 7]} players={props.players} topic='Topic3'/>
+                <GameSpace pos={[8, 8]} players={props.players} topic='CakeSpace4' cakeSlice4={true}/>
             </Grid>
         </Paper>
     );
