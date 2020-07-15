@@ -1,8 +1,8 @@
-import React from 'react';
-import './GameSpace.css';
 import {Box, Grid} from '@material-ui/core';
 import propTypes from 'prop-types';
+import React from 'react';
 import Token from '../Token/Token';
+import './GameSpace.css';
 
 // TODO: Make GameSpace a drop target
 const GameSpace = (props: any) => {

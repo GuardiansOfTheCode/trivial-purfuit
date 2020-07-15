@@ -2,6 +2,7 @@ import {QuestionDao} from '../dao/QuestionDao';
 import {Question} from '../models/Question';
 
 export class QuestionService {
+    private static _instance: QuestionService = new QuestionService();
     private questionDao: QuestionDao = QuestionDao.instance;
 
     constructor() {
@@ -10,8 +11,6 @@ export class QuestionService {
         }
         QuestionService._instance = this;
     }
-
-    private static _instance: QuestionService = new QuestionService();
 
     static get instance(): QuestionService {
         return this._instance;
@@ -23,7 +22,8 @@ export class QuestionService {
 
     // TODO: Remove/edit after skeletal increment demo
     public insertQuestion(question: Question) {
-        console.log(`[QuestionService] insertQuestion(${JSON.stringify(question)})`);
+        console.log(`[QuestionService] insertQuestion()...`);
         this.questionDao.insert(question);
+        console.log(`[QuestionService] insertQuestion() - COMPLETE`);
     }
 }
