@@ -1,7 +1,7 @@
-import React from 'react';
 import {Grid} from '@material-ui/core';
-import './Player.css';
 import propTypes from 'prop-types';
+import React from 'react';
+import './Player.css';
 
 const Player = (props: any) => {
     return (
