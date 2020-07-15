@@ -12,7 +12,7 @@ const GameSpace = (props: any) => {
             text = 'Start';
             break;
         case 'RollAgain':
-            text = 'RollAgain';
+            text = 'Roll Again';
             break;
         case 'NegativeSpace':
             // TODO: Make the GameSpace non-droppable
