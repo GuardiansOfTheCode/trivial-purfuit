@@ -2,20 +2,29 @@ import {Player} from '../models/Player';
 import {DEFAULT_PLAYERS} from '../models/states/DefaultStates';
 
 export class PlayerStateService {
-    private _instance?: Player[] = undefined;
+    private static _instance: PlayerStateService = new PlayerStateService();
+    private _playerState: Player[] = DEFAULT_PLAYERS;
 
     constructor() {
-        if (this._instance == null || this._instance.length === 0) {
-            this._instance = DEFAULT_PLAYERS;
+        if (PlayerStateService._instance) {
+            throw new Error("Instantiation failed: Use PlayerStateService.instance instead of 'new'.");
         }
+        PlayerStateService._instance = this;
     }
 
-    get instance(): Player[] {
-        return this._instance !== undefined ?
-            this._instance : [];
+    static get instance(): PlayerStateService {
+        return this._instance;
     }
 
-    set instance(playerState: Player[]) {
-        this._instance = playerState;
+    static set instance(value: PlayerStateService) {
+        this._instance = value;
+    }
+
+    get playerState(): Player[] {
+        return this._playerState;
+    }
+
+    set playerState(value: Player[]) {
+        this._playerState = value;
     }
 }
