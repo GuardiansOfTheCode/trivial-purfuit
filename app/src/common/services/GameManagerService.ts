@@ -1,22 +1,24 @@
 import {Player} from '../models/Player';
 import {DEFAULT_PLAYERS} from '../models/states/DefaultStates';
+import {QuestionService} from './QuestionService';
 
-export class PlayerStateService {
-    private static _instance: PlayerStateService = new PlayerStateService();
+export class GameManagerService {
+    private static _instance: GameManagerService = new GameManagerService();
+    private _questionService: QuestionService = QuestionService.instance;
     private _playerState: Player[] = DEFAULT_PLAYERS;
 
     constructor() {
-        if (PlayerStateService._instance) {
+        if (GameManagerService._instance) {
             throw new Error('Instantiation failed: Use PlayerStateService.instance instead of \'new\'.');
         }
-        PlayerStateService._instance = this;
+        GameManagerService._instance = this;
     }
 
-    static get instance(): PlayerStateService {
+    static get instance(): GameManagerService {
         return this._instance;
     }
 
-    static set instance(value: PlayerStateService) {
+    static set instance(value: GameManagerService) {
         this._instance = value;
     }
 
@@ -24,9 +26,11 @@ export class PlayerStateService {
         return this._playerState;
     }
 
-    // TODO: Remove/edit after skeletal increment demo
     set playerState(value: Player[]) {
-        console.log(`[PlayerStateService] playerState updated`);
         this._playerState = value;
+    }
+
+    get questionService(): QuestionService {
+        return this._questionService;
     }
 }
