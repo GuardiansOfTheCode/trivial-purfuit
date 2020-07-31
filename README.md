@@ -3,7 +3,7 @@
 
 1. Get started by cloning the repository:
 <br>`git clone https://github.com/GuardiansOfTheCode/trivial-purfuit.git`
-2. You'll automatically be on the stage branch, so you'll need to make your own branch:
+2. Create your own working branch:
 <br>`git checkout -b your-branch-name stage`
 3. Code!
 
