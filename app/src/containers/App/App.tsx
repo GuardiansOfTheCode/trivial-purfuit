@@ -1,7 +1,8 @@
-import {Container} from '@material-ui/core';
+import {Container, Grid} from '@material-ui/core';
 import React, {useState} from 'react';
 import {GameManagerService} from '../../common/services/GameManagerService';
 import GameBoard from '../../components/GameBoard/GameBoard';
+import GameControl from '../../components/GameControl/GameControl';
 import Layout from '../../components/Layout/Layout';
 import StartScreen from '../../components/StartScreen/StartScreen';
 import './App.css';
@@ -42,7 +43,14 @@ const App = () => {
     return (
         <Container className="App">
             <Layout>
-                {page}
+                <Grid container>
+                    <Grid item xs={9}>
+                        {page}
+                    </Grid>
+                    <Grid item xs={3}>
+                        <GameControl/>
+                    </Grid>
+                </Grid>
             </Layout>
         </Container>
     );
