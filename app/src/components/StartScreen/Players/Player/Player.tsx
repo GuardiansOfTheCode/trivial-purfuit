@@ -5,7 +5,8 @@ import './Player.css';
 
 const Player = (props: any) => {
     return (
-        <Grid className='Player'>
+        <Grid item xs={3}
+              className='Player'>
             <div>
                 <p>Name: {props.name}</p>
                 <input type='text'
