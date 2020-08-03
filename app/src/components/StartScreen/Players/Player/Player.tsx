@@ -4,21 +4,20 @@ import React from 'react';
 import './Player.css';
 
 const Player = (props: any) => {
+// TODO:  Update to use context
     return (
         <Grid item xs={3}
               className='Player'>
-            <div>
-                <p>Name: {props.name}</p>
+            <span>
+                <p>{props.name}</p>
                 <input type='text'
                        onChange={props.changeName}
                        placeholder={'Enter name'}/>
-            </div>
+            </span>
 
-            <div>
-                <p>TokenColor: {props.tokenColor}</p>
-                <input type='text'
-                       placeholder={'Enter token color'}/>
-            </div>
+            <span>
+                <p>{props.tokenColor}</p>
+            </span>
         </Grid>
     );
 };
