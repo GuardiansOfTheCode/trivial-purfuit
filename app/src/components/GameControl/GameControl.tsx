@@ -14,7 +14,7 @@ const GameControl = (props: any) => {
         <Paper>
             <Grid container>
                 <Grid item xs={12}>
-                    <h1>Game Control</h1>
+                    <h1>Trivial Purfuit</h1>
                 </Grid>
                 <Grid item xs={12}>
                     <Button variant={'contained'} color={'primary'}>

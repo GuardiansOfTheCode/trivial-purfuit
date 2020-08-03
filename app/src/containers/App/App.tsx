@@ -16,39 +16,39 @@ const App = () => {
         players: gameManagerService.playerState
     });
 
-    const changeNameHandler = (event: any, id: number) => {
-        const copyPlayers = [...playerState.players];
-        const playerIndex = copyPlayers.findIndex(player => player.id === id);
-        const copyPlayer = copyPlayers[playerIndex];
-
-        copyPlayer.name = event.target.value;
-        copyPlayers[playerIndex] = copyPlayer;
-
-        gameManagerService.playerState = copyPlayers;
-        setPlayerState({players: gameManagerService.playerState});
-    };
+    // const changeNameHandler = (event: any, id: number) => {
+    //     const copyPlayers = [...playerState.players];
+    //     const playerIndex = copyPlayers.findIndex(player => player.id === id);
+    //     const copyPlayer = copyPlayers[playerIndex];
+    //
+    //     copyPlayer.name = event.target.value;
+    //     copyPlayers[playerIndex] = copyPlayer;
+    //
+    //     gameManagerService.playerState = copyPlayers;
+    //     setPlayerState({players: gameManagerService.playerState});
+    // };
 
     // TODO: Consider replacing this show/hide functionality with routing
-    const toggleShowStartScreenHandler = () => {
-        toggleShowStartScreen(!showStartScreen);
-    };
+    // const toggleShowStartScreenHandler = () => {
+    //     toggleShowStartScreen(!showStartScreen);
+    // };
 
-    const page = showStartScreen ?
-        <StartScreen players={playerState.players}
-                     changeName={changeNameHandler}
-                     startGame={() => toggleShowStartScreenHandler()}/> :
-        <GameBoard players={playerState.players}
-                   clicked={() => toggleShowStartScreenHandler()}/>;
+    // const page = showStartScreen ?
+    //     <StartScreen players={playerState.players}
+    //                  changeName={changeNameHandler}
+    //                  startGame={() => toggleShowStartScreenHandler()}/> :
+    //     <GameBoard players={playerState.players}
+    //                clicked={() => toggleShowStartScreenHandler()}/>;
 
     return (
         <Container className="App">
             <Layout>
                 <Grid container>
-                    <Grid item xs={9}>
-                        {page}
-                    </Grid>
                     <Grid item xs={3}>
                         <GameControl/>
+                    </Grid>
+                    <Grid item xs={9}>
+                        <GameBoard players={playerState.players}/>
                     </Grid>
                 </Grid>
             </Layout>
