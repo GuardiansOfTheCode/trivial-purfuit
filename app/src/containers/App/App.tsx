@@ -4,13 +4,16 @@ import {GameManagerService} from '../../common/services/GameManagerService';
 import GameBoard from '../../components/GameBoard/GameBoard';
 import GameControl from '../../components/GameControl/GameControl';
 import Layout from '../../components/Layout/Layout';
-import StartScreen from '../../components/StartScreen/StartScreen';
 import './App.css';
 
 const gameManagerService: GameManagerService = GameManagerService.instance;
 
 const App = () => {
-    const [showStartScreen, toggleShowStartScreen] = useState(true);
+    const [inGame, setInGame] = useState(false);
+
+    const toggleInGameHandler = () => {
+        setInGame(!inGame);
+    }
 
     const [playerState, setPlayerState] = useState({
         players: gameManagerService.playerState
@@ -28,28 +31,25 @@ const App = () => {
         setPlayerState({players: gameManagerService.playerState});
     };
 
-    // TODO: Consider replacing this show/hide functionality with routing
-    const toggleShowStartScreenHandler = () => {
-        toggleShowStartScreen(!showStartScreen);
-    };
-
-    const page = showStartScreen ?
-        <StartScreen players={playerState.players}
-                     changeName={changeNameHandler}
-                     startGame={() => toggleShowStartScreenHandler()}/> :
-        <GameBoard players={playerState.players}
-                   clicked={() => toggleShowStartScreenHandler()}/>;
-
     return (
         <Container className="App">
             <Layout>
-                <Grid container>
-                    <Grid item xs={9}>
-                        {page}
-                    </Grid>
+                <Grid
+                    container
+                    direction="row"
+                    justify="center"
+                    alignItems="center">
+
                     <Grid item xs={3}>
-                        <GameControl/>
+                        <GameControl players={playerState.players}
+                                     changeName={changeNameHandler}
+                                     inGame={inGame}
+                                     onClick={toggleInGameHandler}/>
                     </Grid>
+                    <Grid item xs={9}>
+                        <GameBoard players={playerState.players}/>
+                    </Grid>
+
                 </Grid>
             </Layout>
         </Container>

@@ -1,0 +1,33 @@
+.CakeSlice {
+    height: 5%;
+    width: 5%;
+    font-size: xx-small;
+}
+
+.CakeSlice1 {
+    border-style: solid;
+    border-color: red;
+    border-width: 1vw;
+    background-color: ghostwhite;
+}
+
+.CakeSlice2 {
+    border-style: solid;
+    border-color: darkorange;
+    border-width: 1vw;
+    background-color: ghostwhite;
+}
+
+.CakeSlice3 {
+    border-style: solid;
+    border-color: gold;
+    border-width: 1vw;
+    background-color: ghostwhite;
+}
+
+.CakeSlice4 {
+    border-style: solid;
+    border-color: green;
+    border-width: 1vw;
+    background-color: ghostwhite;
+}
