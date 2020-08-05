@@ -24,83 +24,79 @@ export interface _Choices
 
 export const questionAnswersData:_QuestionCard[] = [ 
    {
-      category: Category.BLUE,
-      question: "What is your name?",
+      category: Category.WHITE,
+      question: "On what day in 1776 did the Continental Congress declare its freedom from Britain?",
       answers: [
          {
-            answer: "Henry",
-            correct: true
+            answer: "June 4"            
          },
          {
-            answer: "Bill"
+            answer: "June 30"
+         },
+         {
+            answer: "July 4"
+         },
+         {
+            answer: "July 2",
+            correct: true
          }
       ]
    },
    {
       category: Category.BLUE,
-      question: "What is your hobby?",
+      question: "Which colony rioted when news of the Declaration spread?",
       answers: [
          {
-            answer: "Dancing",
+            answer: "Virginia",
+         },
+         {
+            answer: "Maryland",
+         },
+         {
+            answer: "New York",
             correct: true
          },
          {
-            answer: "Singing",
+            answer: "Delaware",
          }
       ]
    },
    {
       category: Category.RED,
-      question: "What is your favorite food?",
+      question: "Who was the oldest signer of the Declaration of Independence?",
       answers: [
          {
-            answer: "Crabs",
+            answer: "John Witherspoon"            
+         },
+         {
+            answer: "Benjamin Franklin",
             correct: true
          },
          {
-            answer: "Burgers"
-         }
-      ]
-   },
-   {
-      category: Category.RED,
-      question: "What is your favorite soda?",
-      answers: [
-         {
-            answer: "coke",
-            correct: true
+            answer: "Samuel Adams",
          },
          {
-            answer: "pepsi",
+            answer: "Benjamin Harrison"
          }
       ]
    },
    {
       category: Category.GREEN,
-      question: "Is this cool?",
+      question: " Which special event overlapped with the Centennial celebration of Independence Day?",
       answers: [
          {
-            answer: "yes",
+            answer: "World’s Fair in Philadelphia",
             correct: true
          },
          {
-            answer: "no",
-            correct: false
-         }
-      ]
-   },
-   {
-      category: Category.GREEN,
-      question: "How fun is this?",
-      answers: [
-         {
-            answer: "fun",
-            correct: true
+            answer: "The Gettysburg Address",
          },
          {
-            answer: "barely",
+            answer: "The first US telephone call",
+         },
+         {
+            answer: "A presidential assassination",
          }
-      ]
-   },
-
+      ]      
+   }
 ]
