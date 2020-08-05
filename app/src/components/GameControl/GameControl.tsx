@@ -2,6 +2,7 @@ import {Button, Grid, Paper} from '@material-ui/core';
 import propTypes from 'prop-types';
 import React from 'react';
 import Players from '../Players/Players';
+import Question from '../Question/Question';
 
 /**
  * This component contains game state information such as player names, token cake status, and current player turn.
@@ -26,6 +27,12 @@ const GameControl = (props: any) => {
             </Button>
         </Grid>;
 
+    const addQuestion = !props.inGame ?
+        <Grid item xs={12}>
+            <hr/>
+            <Question/>
+        </Grid> : '';
+
     return (
         <Paper>
             <Grid container>
@@ -35,7 +42,10 @@ const GameControl = (props: any) => {
                              changeName={props.changeName}
                              inGame={props.inGame}/>
                 </Grid>
+
                 {startQuitButton}
+
+                {addQuestion}
             </Grid>
         </Paper>
     )
