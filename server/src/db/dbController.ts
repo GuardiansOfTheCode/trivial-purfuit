@@ -10,42 +10,31 @@ const log = (msg: any) => {
 }
  
 //Create empty array for each category
-let usedCards: number[][] = [...Array(Category.END_CATEGORY)].map(e => Array(0))
+let usedCardIds: number[][] = [...Array(Category.END_CATEGORY)].map(e => Array(0))
+let tmp: number[] = []
 
 const GetUnusedCard = (category: Category, cards: Question[]): Question => 
 {   
    log("---------------------") 
-   log("GetUnusedCard")
-   let gotNewId:boolean = false
-   let newCardIdx: number = 0
+   log("GetUnusedCard")   
+   
+   let ids: number[] = usedCardIds[category]
+   
+   // remove used cards
+   let cardsToPickFrom: Question[] = cards.filter( (card: Question) => ids.includes(card.id) == false)
 
-   const predicate = (lhs:number, rhs:number) => {
-      //console.log("comp " + lhs + "<->" + rhs)
-      return lhs === rhs   
-   }
-
-   //console.log("There are "+ cards.length + " ids" )
-
-   let query: number[] = usedCards[category]
-   for(let i = 0; !gotNewId && i !== cards.length; ++i)
-   {  
-      if( query.find(x => predicate(x, cards[i].id)) === undefined )
-      {         
-         gotNewId = true
-         newCardIdx = i
-         //console.log("got new id of => " + cards[i]?.id)
-      }      
-   }
-
-   if(!gotNewId)
+   if(cardsToPickFrom.length === 0) 
    {
-      //console.log("no new id")
-      usedCards[category] = [] //go back to first card/id, use global value not local queired
-      newCardIdx = 0;
-   }
+      cardsToPickFrom = cards //all used so select from the used
+      usedCardIds[category] = [] // and empty records to start over
+   }      
+   
+   let randIdx: number = Math.floor( Math.random() * (cardsToPickFrom.length - 1))
 
-   usedCards[category].push( cards[newCardIdx].id )
-   return  (cards.length > 0) ? cards[newCardIdx] : new Question()
+   let selectedCard: Question = cardsToPickFrom[randIdx]
+
+   usedCardIds[category].push( selectedCard.id )
+   return selectedCard
 }
 
 export const GetQuestionCard = async(req: Request, res: Response) => 
@@ -53,6 +42,8 @@ export const GetQuestionCard = async(req: Request, res: Response) =>
    log("---------------------")
    log("GetQuestionCard")
    let valid: boolean = true
+
+   // check if there are valid parameters
    let category:Category = (Object.keys(req.body).length !== 0) ? req.body.category : 
       (Object.keys(req.query).length !== 0) ? req.query.category : 
       valid = false 
@@ -63,48 +54,39 @@ export const GetQuestionCard = async(req: Request, res: Response) =>
       return
    }
 
-   knex(tableQuestions)
-   .where({
-      category: category
-   })
-   .then( (rows: Question[])=>{
-      if(rows.length > 0)
-      {           
-         let card: Question = GetUnusedCard(rows[0].category, rows)
-         let tmp:QuestionCard = 
-            { id: card.id, category: card.category, question: card.question, answers: [] }         
-         GetAnswers(card.id)
-         .then( (data: any) => {
-            tmp.answers = data
-            res.json(tmp)
-         })
-         .catch( (err: any)=> {
-            res.status(500).json({message: `Failed to retrieve question answers: ${err}`})
-         })
-      }
-      else
-      {
-         log("No rows retrieved of the category")
-         res.status(500).json()
-      }
-   })
-   .catch( (err: any) => {
-      res.status(500).json({message: `General failure retrieving a Question card: ${err}`}) 
-   })
+   knex(tableQuestions).where({ category: category })
+      .then( (rows: Question[])=>{
+         if(rows.length > 0)
+         {           
+            let card: Question = GetUnusedCard(rows[0].category, rows)
+            let tmp:QuestionCard = 
+               { id: card.id, category: card.category, question: card.question, answers: [] }         
+            GetAnswers(card.id)
+               .then( (data: any) => {
+                  tmp.answers = data
+                  res.json(tmp)
+               })
+               .catch( (err: any)=> {
+                  res.status(500).json({message: `Failed to retrieve question answers: ${err}`})
+               })
+         }
+         else
+         {
+            log("No rows retrieved of the category")
+            res.status(500).json()
+         }
+      })
+      .catch( (err: any) => {
+         res.status(500).json({message: `General failure retrieving a Question card: ${err}`}) 
+      })
 }
 
-const GetAnswers = async (key: number) : Promise<void> =>
+const GetAnswers = async (questionId: number) : Promise<any> =>
 {
-   return knex(tableAnswers).where({
-      questionId: key
-   })
-   .then( (rows: Answer[])=>{      
-      return rows
-   })
-   .catch( (err:any)=> {
-      console.log("Failed to GetAnswers " + err)
-      throw err 
-   })
+   return knex(tableAnswers).where({questionId: questionId })
+      .then( (rows: Answer[])=>{  
+         return rows
+      })
 }
 
 export const GetAllQuestionCards = async (req: Request, res: Response) => 
@@ -219,22 +201,24 @@ export const UpdateCard = async (req: Request, res: Response) =>
             category: card.category,
             question: card.question
          })
-         .then( async ()=>
+         .then( ()=>
          {
-            for(let i = 0; i < card.answers.length; ++i)            
-            {
-               let anAnswer: Choices = card.answers[i]             
-               await trx(tableAnswers)
-               .where({id: anAnswer.id})
-               .update({
-                  answer: anAnswer.answer,
-                  correct: anAnswer.correct
+            let promises: Promise<any>[] = []
+            card.answers.forEach( (anAnswer: Choices) => {
+               promises.push(
+                  trx(tableAnswers)
+                  .where({id: anAnswer.id})
+                  .update({
+                     answer: anAnswer.answer,
+                     correct: anAnswer.correct
+                  })
+               )
+            })
+            return Promise.all(promises)               
+               .then( ()=>{
+                  res.status(200).json({message: "Question card upated"})
                })
-            }
          })
-   })
-   .then( ()=>{
-      res.status(200).json({message: "Question card upated"})
    })
    .catch((err:any) => res.status(500).json({message: `General failure ${err}`}) )
 }

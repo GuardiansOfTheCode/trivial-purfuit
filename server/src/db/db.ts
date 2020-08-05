@@ -1,7 +1,6 @@
 // Import path module
 import path from 'path'
 import {dbName, tableQuestions, tableAnswers} from './dbConfig'
-import '../../seeds/trivia'
 import { _QuestionCard, questionAnswersData } from '../../seeds/trivia'
 
 // Get the location of database.sqlite file

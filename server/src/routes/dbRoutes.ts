@@ -1,7 +1,7 @@
 // Import express
 import  {Router} from 'express'
 
-// Import books-controller
+// Import controller
 import {GetAllQuestionCards, GetQuestionCard, AddQuestionCards, ResetTables, RemoveCards, UpdateCard} from '../db/dbController'
 
 // Create router

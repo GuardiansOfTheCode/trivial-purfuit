@@ -18,5 +18,6 @@ export enum Category {
    RED,
    BLUE,
    GREEN,
+   WHITE,
    END_CATEGORY
 }
