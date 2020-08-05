@@ -21,13 +21,13 @@ const App = () => {
     //     .then(response => console.log(`${JSON.stringify(response.data)}`));
 
     /* Add list of Question Cards */
-    const testQuestion = new Question(999, 1, 'Is the sky blue?');
-    const testAnswer = new Answer(0, 'Yes', true);
-    const testWrongAnswer = new Answer(1, 'No', false);
-    const testQuestionCard = new QuestionCard(testQuestion, [testAnswer, testWrongAnswer]);
-
-    gameManagerService.questionService.addQuestionCards([testQuestionCard])
-        .then(response => console.log(`${JSON.stringify(response.data)}`));
+    // const testQuestion = new Question(1, 'Is the sky blue?');
+    // const testAnswer = new Answer('Yes', true);
+    // const testWrongAnswer = new Answer('No', false);
+    // const testQuestionCard = new QuestionCard(testQuestion, [testAnswer, testWrongAnswer]);
+    //
+    // gameManagerService.questionService.addQuestionCards([testQuestionCard])
+    //     .then(response => console.log(`${JSON.stringify(response.data)}`));
 
     // const testQuestion = new Question(1, 'Is the sky red?');
     // const testAnswer = new Answer('Yes', false);
