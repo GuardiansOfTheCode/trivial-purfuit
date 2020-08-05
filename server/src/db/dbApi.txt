@@ -1,0 +1,16 @@
+API
+Below are the parameters required for the API
+
+GET /all
+
+POST or GET /card - json object with a key of category on POST's body(json) or query (which is ?category=value)
+
+PUT card - the QuestionCard interface object - body
+
+POST /cards - Array of QuestionCard interface objects - body
+
+PUT /reset - Resets tables to the intial defaults
+
+delete /delete - Array of the table ids ( each id corresponds to table to delete) - body
+
+Refer to routes/quest-ans-routes.ts for more
