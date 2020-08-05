@@ -1,8 +1,5 @@
 import {Container, Grid} from '@material-ui/core';
 import React, {useState} from 'react';
-import {Answer} from '../../common/models/Answer';
-import {Question} from '../../common/models/Question';
-import {QuestionCard} from '../../common/models/QuestionCard';
 import {GameManagerService} from '../../common/services/GameManagerService';
 import GameBoard from '../../components/GameBoard/GameBoard';
 import GameControl from '../../components/GameControl/GameControl';

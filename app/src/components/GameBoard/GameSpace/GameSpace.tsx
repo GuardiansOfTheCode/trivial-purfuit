@@ -26,6 +26,7 @@ const GameSpace = (props: any) => {
         props.players.map((player: any) => {
             return player.pos[0] === props.pos[0] && player.pos[1] === props.pos[1] ?
                 <Token key={player.id}
+                       playerId={player.id}
                        color={player.tokenColor}
                        totalCakeSlices={player.totalCakeSlices}/> : null;
         }) : null;

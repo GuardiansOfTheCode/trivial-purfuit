@@ -1,0 +1,36 @@
+.Token {
+    height: 5%;
+    width: 5%;
+}
+
+.Token1 {
+    margin: auto;
+    padding: 2%;
+    border-style: solid;
+    border-width: .5vw;
+    border-color: red;
+}
+
+.Token2 {
+    margin: auto;
+    padding: 2%;
+    border-style: solid;
+    border-width: .5vw;
+    border-color: blue;
+}
+
+.Token3 {
+    margin: auto;
+    padding: 2%;
+    border-style: solid;
+    border-width: .5vw;
+    border-color: green;
+}
+
+.Token4 {
+    margin: auto;
+    padding: 2%;
+    border-style: solid;
+    border-width: .5vw;
+    border-color: orange;
+}
