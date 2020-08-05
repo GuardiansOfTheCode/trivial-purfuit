@@ -26,6 +26,6 @@
     "build": "tsc",
     "start": "concurrently \"npm run build-watch\" \"npm run start-server\"",
     "clean": "rm dist/* -r",
-    "clean all" : "clean && rm -r node/modules"
+    "clean all": "clean && rm -r node/modules"
   }
 }

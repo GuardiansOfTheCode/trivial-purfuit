@@ -1,5 +1,8 @@
 import {Container, Grid} from '@material-ui/core';
 import React, {useState} from 'react';
+import {Answer} from '../../common/models/Answer';
+import {Question} from '../../common/models/Question';
+import {QuestionCard} from '../../common/models/QuestionCard';
 import {GameManagerService} from '../../common/services/GameManagerService';
 import GameBoard from '../../components/GameBoard/GameBoard';
 import GameControl from '../../components/GameControl/GameControl';
@@ -9,6 +12,38 @@ import './App.css';
 const gameManagerService: GameManagerService = GameManagerService.instance;
 
 const App = () => {
+    /* Fetch all question cards */
+    // gameManagerService.questionService.fetchAllQuestionCards()
+    //     .then(response => console.log(`${JSON.stringify(response.data)}`));
+
+    /* Fetch random card */
+    // gameManagerService.questionService.fetchRandomQuestionCardByCategory(1)
+    //     .then(response => console.log(`${JSON.stringify(response.data)}`));
+
+    /* Add list of Question Cards */
+    const testQuestion = new Question(999, 1, 'Is the sky blue?');
+    const testAnswer = new Answer(0, 'Yes', true);
+    const testWrongAnswer = new Answer(1, 'No', false);
+    const testQuestionCard = new QuestionCard(testQuestion, [testAnswer, testWrongAnswer]);
+
+    gameManagerService.questionService.addQuestionCards([testQuestionCard])
+        .then(response => console.log(`${JSON.stringify(response.data)}`));
+
+    // const testQuestion = new Question(1, 'Is the sky red?');
+    // const testAnswer = new Answer('Yes', false);
+    // const testWrongAnswer = new Answer('No', true);
+    // const testQuestionCard = new QuestionCard(testQuestion, [testAnswer, testWrongAnswer]);
+    // gameManagerService.questionService.updateQuestionCard(5, testQuestionCard)
+    //     .then(response => console.log(`${JSON.stringify(response.data)}`));
+
+    /* Reset db */
+    // gameManagerService.questionService.resetQuestionDatabaseTables()
+    //     .then(response => console.log(`${JSON.stringify(response.data)}`));
+
+    /* Delete card by id */
+    // gameManagerService.questionService.deleteQuestionCardById(42)
+    //     .then(response => console.log(`${JSON.stringify(response.data)}`));
+
     const [inGame, setInGame] = useState(false);
 
     const toggleInGameHandler = () => {
