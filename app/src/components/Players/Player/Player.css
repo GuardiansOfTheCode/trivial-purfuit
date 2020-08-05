@@ -1,0 +1,39 @@
+.Player1 {
+    font-weight: bold;
+    font-size: small;
+    margin: auto;
+    padding: 2%;
+    border-style: solid;
+    border-width: .5vw;
+    border-color: red;
+}
+
+.Player2 {
+    font-weight: bold;
+    font-size: small;
+    margin: auto;
+    padding: 2%;
+    border-style: solid;
+    border-width: .5vw;
+    border-color: blue;
+}
+
+.Player3 {
+    font-weight: bold;
+    font-size: small;
+    margin: auto;
+    padding: 2%;
+    border-style: solid;
+    border-width: .5vw;
+    border-color: green;
+}
+
+.Player4 {
+    font-weight: bold;
+    font-size: small;
+    margin: auto;
+    padding: 2%;
+    border-style: solid;
+    border-width: .5vw;
+    border-color: orange;
+}
