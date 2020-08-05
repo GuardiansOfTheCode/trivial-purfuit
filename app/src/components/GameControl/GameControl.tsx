@@ -19,12 +19,22 @@ const GameControl = (props: any) => {
                 Start Game
             </Button>
         </Grid> :
-        <Grid item xs={12}>
-            <Button variant={'contained'}
-                    color={'primary'}
-                    onClick={props.onClick}>
-                Quit Game
-            </Button>
+        <Grid container>
+            <Grid item xs={6}>
+                <Button variant={'contained'}
+                        color={'default'}
+                        onClick={props.onClick}>
+                    Quit Game
+                </Button>
+            </Grid>
+
+            <Grid item xs={6}>
+                <Button variant={'contained'}
+                        color={'primary'}
+                        onClick={props.onClickRollDie}>
+                    Roll Dice
+                </Button>
+            </Grid>
         </Grid>;
 
     const addQuestion = !props.inGame ?
@@ -36,6 +46,7 @@ const GameControl = (props: any) => {
     return (
         <Paper>
             <Grid container>
+
                 <Grid item xs={12}>
                     <h1>Trivial Purfuit</h1>
                     <Players players={props.players}
@@ -44,8 +55,8 @@ const GameControl = (props: any) => {
                 </Grid>
 
                 {startQuitButton}
-
                 {addQuestion}
+
             </Grid>
         </Paper>
     )
@@ -55,7 +66,8 @@ GameControl.propTypes = {
     players: propTypes.array,
     changeName: propTypes.func,
     inGame: propTypes.bool,
-    onClick: propTypes.func
+    onClick: propTypes.func,
+    onClickRollDie: propTypes.func
 };
 
 export default GameControl;

@@ -6,6 +6,8 @@ export class GameManagerService {
     private static _instance: GameManagerService = new GameManagerService();
     private _questionService: QuestionService = QuestionService.instance;
     private _playerState: Player[] = DEFAULT_PLAYERS;
+    public currentPlayer = 0;
+    public dieValue = 0;
 
     constructor() {
         if (GameManagerService._instance) {
@@ -32,5 +34,9 @@ export class GameManagerService {
 
     get questionService(): QuestionService {
         return this._questionService;
+    }
+
+    public nextPlayer() {
+        this.currentPlayer = this.currentPlayer < 3 ? this.currentPlayer++ : 0;
     }
 }

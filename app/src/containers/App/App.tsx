@@ -46,7 +46,7 @@ const App = () => {
 
     const [inGame, setInGame] = useState(false);
 
-    const toggleInGameHandler = () => {
+    const handleInGameToggle = () => {
         setInGame(!inGame);
     }
 
@@ -54,7 +54,7 @@ const App = () => {
         players: gameManagerService.playerState
     });
 
-    const changeNameHandler = (event: any, id: number) => {
+    const handleChangeName = (event: any, id: number) => {
         const copyPlayers = [...playerState.players];
         const playerIndex = copyPlayers.findIndex(player => player.id === id);
         const copyPlayer = copyPlayers[playerIndex];
@@ -65,6 +65,11 @@ const App = () => {
         gameManagerService.playerState = copyPlayers;
         setPlayerState({players: gameManagerService.playerState});
     };
+
+    const handleRollDie = () => {
+        gameManagerService.dieValue = Math.ceil(Math.random() * 6);
+        console.log(gameManagerService.dieValue);
+    }
 
     return (
         <Container className="App">
@@ -77,9 +82,10 @@ const App = () => {
 
                     <Grid item xs={3}>
                         <GameControl players={playerState.players}
-                                     changeName={changeNameHandler}
+                                     changeName={handleChangeName}
                                      inGame={inGame}
-                                     onClick={toggleInGameHandler}/>
+                                     onClick={handleInGameToggle}
+                                     onClickRollDie={handleRollDie}/>
                     </Grid>
                     <Grid item xs={9}>
                         <GameBoard players={playerState.players}/>
