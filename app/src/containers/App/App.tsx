@@ -9,6 +9,12 @@ import './App.css';
 const gameManagerService: GameManagerService = GameManagerService.instance;
 
 const App = () => {
+    const [inGame, setInGame] = useState(false);
+
+    const toggleInGameHandler = () => {
+        setInGame(!inGame);
+    }
+
     const [playerState, setPlayerState] = useState({
         players: gameManagerService.playerState
     });
@@ -32,11 +38,13 @@ const App = () => {
                     container
                     direction="row"
                     justify="center"
-                    alignItems="center"
-                >
+                    alignItems="center">
+
                     <Grid item xs={3}>
                         <GameControl players={playerState.players}
-                                     changeName={changeNameHandler}/>
+                                     changeName={changeNameHandler}
+                                     inGame={inGame}
+                                     onClick={toggleInGameHandler}/>
                     </Grid>
                     <Grid item xs={9}>
                         <GameBoard players={playerState.players}/>

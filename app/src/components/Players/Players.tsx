@@ -13,7 +13,8 @@ const Players = (props: any) => {
                 props.players.map((player: any) => {
                     return <Player {...player}
                                    key={player.id}
-                                   changeName={(event: any) => props.changeName(event, player.id)}/>;
+                                   changeName={(event: any) => props.changeName(event, player.id)}
+                                   inGame={props.inGame}/>;
                 })
             }
         </Grid>
@@ -22,7 +23,8 @@ const Players = (props: any) => {
 
 Players.propTypes = {
     players: propTypes.array,
-    changeName: propTypes.func
+    changeName: propTypes.func,
+    inGame: propTypes.bool
 };
 
 export default Players;

@@ -1,26 +1,34 @@
-import {Grid} from '@material-ui/core';
+import {Box, Grid} from '@material-ui/core';
 import propTypes from 'prop-types';
 import React from 'react';
+import CakeSlice from './CakeSlice/CakeSlice';
 import './Player.css';
 
 const Player = (props: any) => {
-    return (
-        <Grid item xs={3}
-              className='Player'>
-            <div>
+    const notInGameComponent =
+        <Grid item xs={12}>
+            <Box className={'Player'+props.id}>
                 <p>Name: {props.name}</p>
                 <input type='text'
                        onChange={props.changeName}
                        placeholder={'Enter name'}/>
-            </div>
+            </Box>
+        </Grid>;
 
-            <div>
-                <p>TokenColor: {props.tokenColor}</p>
-                <input type='text'
-                       placeholder={'Enter token color'}/>
-            </div>
-        </Grid>
-    );
+    const inGameComponent =
+        <Grid item xs={12}>
+            <Box className={'Player'+props.id}>
+                <p>{props.name}</p>
+                <CakeSlice cakeSlice1={props.cakeSlice1}
+                           cakeSlice2={props.cakeSlice2}
+                           cakeSlice3={props.cakeSlice3}
+                           cakeSlice4={props.cakeSlice4}/>
+            </Box>
+        </Grid>;
+
+    const component = props.inGame ? inGameComponent : notInGameComponent;
+
+    return (component);
 };
 
 Player.propTypes = {
@@ -35,7 +43,8 @@ Player.propTypes = {
     cakeSlice2: propTypes.bool,
     cakeSlice3: propTypes.bool,
     cakeSlice4: propTypes.bool,
-    changeName: propTypes.func
+    changeName: propTypes.func,
+    inGame: propTypes.bool
 };
 
 export default Player;
