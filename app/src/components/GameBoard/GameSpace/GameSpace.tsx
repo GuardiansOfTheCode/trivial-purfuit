@@ -1,10 +1,9 @@
 import {Box, Grid} from '@material-ui/core';
 import propTypes from 'prop-types';
 import React from 'react';
-import Token from '../Token/Token';
 import './GameSpace.css';
+import './Token.css';
 
-// TODO: Make GameSpace a drop target
 const GameSpace = (props: any) => {
     let text: string | null;
     switch (props.topic) {
@@ -22,19 +21,31 @@ const GameSpace = (props: any) => {
             text = null;
     }
 
+    const handleDragStart = (event: any, player: any) => {
+        event.dataTransfer.setData('playerId', player.id);
+    }
+
+    const handleDragOver = (event: any) => {
+        event.preventDefault();
+    }
+
     const tokens = props.players !== undefined ?
         props.players.map((player: any) => {
             return player.pos[0] === props.pos[0] && player.pos[1] === props.pos[1] ?
-                <Token key={player.id}
-                       playerId={player.id}
-                       color={player.tokenColor}
-                       totalCakeSlices={player.totalCakeSlices}/> : null;
+                <Box key={player.id}
+                     className={'Token ' + 'Token' + player.id}
+                     draggable={true}
+                     onDragStart={event => handleDragStart(event, player)}/> : null;
         }) : null;
 
     return (
         <Grid item>
-            <Box className={'GameSpace ' + props.topic}>
+            <Box className={'GameSpace ' + props.topic}
+                 onDrop={event => props.handleDrop(event, props.pos)}
+                 onDragOver={event => handleDragOver(event)}>
+
                 {text}
+
                 <Box>
                     {tokens}
                 </Box>
@@ -50,7 +61,8 @@ GameSpace.propTypes = {
     cakeSlice1: propTypes.bool,
     cakeSlice2: propTypes.bool,
     cakeSlice3: propTypes.bool,
-    cakeSlice4: propTypes.bool
+    cakeSlice4: propTypes.bool,
+    handleDrop: propTypes.func
 };
 
 export default GameSpace;

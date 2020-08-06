@@ -1,5 +1,6 @@
 import {Container, Grid} from '@material-ui/core';
 import React, {useState} from 'react';
+import {Player} from '../../common/models/Player';
 import {GameManagerService} from '../../common/services/GameManagerService';
 import GameBoard from '../../components/GameBoard/GameBoard';
 import GameControl from '../../components/GameControl/GameControl';
@@ -68,6 +69,19 @@ const App = () => {
         console.log(gameManagerService.dieValue);
     }
 
+    const handleDrop = (event: any, pos: number[]) => {
+        const id = event.dataTransfer.getData('playerId');
+        const copyPlayers = [...playerState.players];
+        const playerIndex = copyPlayers.findIndex(player => player.id == id);
+        const copyPlayer: Player = copyPlayers[playerIndex];
+
+        copyPlayer.pos = pos;
+        copyPlayers[playerIndex] = copyPlayer;
+
+        gameManagerService.playerState = copyPlayers;
+        setPlayerState({players: gameManagerService.playerState});
+    }
+
     return (
         <Container className="App">
             <Layout>
@@ -85,7 +99,8 @@ const App = () => {
                                      onClickRollDie={handleRollDie}/>
                     </Grid>
                     <Grid item xs={9}>
-                        <GameBoard players={playerState.players}/>
+                        <GameBoard players={playerState.players}
+                                   handleDrop={handleDrop}/>
                     </Grid>
 
                 </Grid>
