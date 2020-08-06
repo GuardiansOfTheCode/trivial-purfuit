@@ -1,6 +1,6 @@
 import {Button, Grid, Paper} from '@material-ui/core';
 import propTypes from 'prop-types';
-import React, {useEffect} from 'react';
+import React from 'react';
 import Players from './Players/Players';
 import Question from './Question/Question';
 

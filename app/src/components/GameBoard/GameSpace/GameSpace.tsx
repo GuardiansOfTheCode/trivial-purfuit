@@ -14,7 +14,6 @@ const GameSpace = (props: any) => {
             text = 'Roll Again';
             break;
         case 'NegativeSpace':
-            // TODO: Make the GameSpace non-droppable
             text = null;
             break;
         default:
@@ -33,7 +32,7 @@ const GameSpace = (props: any) => {
         props.players.map((player: any) => {
             return player.pos[0] === props.pos[0] && player.pos[1] === props.pos[1] ?
                 <Box key={player.id}
-                     className={'Token ' + 'Token' + player.id}
+                     className={'Token Token' + player.id}
                      draggable={true}
                      onDragStart={event => handleDragStart(event, player)}/> : null;
         }) : null;
