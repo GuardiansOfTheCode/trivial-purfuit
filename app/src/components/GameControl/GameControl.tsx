@@ -1,6 +1,6 @@
 import {Button, Grid, Paper} from '@material-ui/core';
 import propTypes from 'prop-types';
-import React from 'react';
+import React, {useEffect} from 'react';
 import Players from './Players/Players';
 import Question from './Question/Question';
 
@@ -32,7 +32,7 @@ const GameControl = (props: any) => {
                 <Button variant={'contained'}
                         color={'primary'}
                         onClick={props.onClickRollDie}>
-                    Roll Dice
+                    Roll Die
                 </Button>
             </Grid>
         </Grid>;
@@ -40,8 +40,13 @@ const GameControl = (props: any) => {
     const addQuestion = !props.inGame ?
         <Grid item xs={12}>
             <hr/>
-            <Question/>
+            <Question {...props}/>
         </Grid> : '';
+
+    const dieValue = props.inGame ?
+        <Grid item xs={12}>
+            <h4>Die value: {props.dieValue}</h4>
+        </Grid> : null;
 
     return (
         <Paper>
@@ -52,6 +57,7 @@ const GameControl = (props: any) => {
                     <Players players={props.players}
                              changeName={props.changeName}
                              inGame={props.inGame}/>
+                    {dieValue}
                 </Grid>
 
                 {startQuitButton}
@@ -67,7 +73,14 @@ GameControl.propTypes = {
     changeName: propTypes.func,
     inGame: propTypes.bool,
     onClick: propTypes.func,
-    onClickRollDie: propTypes.func
+    onClickRollDie: propTypes.func,
+    onClickAddQuestion: propTypes.func,
+    onClickDeleteQuestion: propTypes.func,
+    onClickFetchAll: propTypes.func,
+    onClickFetchRandomCard: propTypes.func,
+    onClickUpdateCard: propTypes.func,
+    onClickResetDb: propTypes.func,
+    dieValue: propTypes.number
 };
 
 export default GameControl;
