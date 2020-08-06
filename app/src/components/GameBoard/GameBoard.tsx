@@ -104,7 +104,7 @@ const GameBoard = (props: any) => {
             </Grid>
 
             <Grid container justify='center'>
-                <GameSpace {...props} pos={[8, 0]} topic='CakeSpace4' cakeSlice3={true}/>
+                <GameSpace {...props} pos={[8, 0]} topic='CakeSpace4' cakeSlice4={true}/>
                 <GameSpace {...props} pos={[8, 1]} topic='Topic1'/>
                 <GameSpace {...props} pos={[8, 2]} topic='RollAgain'/>
                 <GameSpace {...props} pos={[8, 3]} topic='Topic2'/>
@@ -112,7 +112,7 @@ const GameBoard = (props: any) => {
                 <GameSpace {...props} pos={[8, 5]} topic='Topic4'/>
                 <GameSpace {...props} pos={[8, 6]} topic='RollAgain'/>
                 <GameSpace {...props} pos={[8, 7]} topic='Topic1'/>
-                <GameSpace {...props} pos={[8, 8]} topic='CakeSpace2' cakeSlice4={true}/>
+                <GameSpace {...props} pos={[8, 8]} topic='CakeSpace2' cakeSlice2={true}/>
             </Grid>
         </Paper>
     );
@@ -120,7 +120,9 @@ const GameBoard = (props: any) => {
 
 GameBoard.propTypes = {
     players: propTypes.array,
-    handleDrop: propTypes.func
+    handleDrop: propTypes.func,
+    onClickFetchRandomQuestion: propTypes.func,
+    inGame: propTypes.bool
 };
 
 export default GameBoard;

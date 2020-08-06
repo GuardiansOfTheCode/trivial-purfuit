@@ -20,28 +20,28 @@
 
 .Topic2 {
     border-style: solid;
-    border-color: darkorange;
+    border-color: whitesmoke;
     border-width: 1vw;
-    background-color: darkorange;
+    background-color: whitesmoke;
 }
 
 .CakeSpace2 {
     border-style: solid;
-    border-color: darkorange;
+    border-color: lightgray;
     border-width: 1vw;
     background-color: ghostwhite;
 }
 
 .Topic3 {
     border-style: solid;
-    border-color: gold;
+    border-color: blue;
     border-width: 1vw;
-    background-color: gold;
+    background-color: blue;
 }
 
 .CakeSpace3 {
     border-style: solid;
-    border-color: gold;
+    border-color: blue;
     border-width: 1vw;
     background-color: ghostwhite;
 }
@@ -62,9 +62,9 @@
 
 .RollAgain {
     border-style: solid;
-    border-color: gray;
+    border-color: lightgray;
     border-width: 1vw;
-    background-color: ghostwhite;
+    background-color: lightgray;
 }
 
 .Start {
@@ -76,7 +76,7 @@
 
 .NegativeSpace {
     border-style: solid;
-    border-color: ghostwhite;
+    border-color: darkslategray;
     border-width: 1vw;
-    background-color: ghostwhite;
+    background-color: darkslategray;
 }

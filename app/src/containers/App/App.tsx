@@ -1,4 +1,5 @@
 import {Container, Grid} from '@material-ui/core';
+import {AxiosResponse} from 'axios';
 import React, {useState} from 'react';
 import {Answer} from '../../common/models/Answer';
 import {Player} from '../../common/models/Player';
@@ -20,6 +21,11 @@ const App = () => {
     const [dieValue, setDieValue] = useState(gameManagerService.dieValue);
 
     const [inGame, setInGame] = useState(false);
+
+    const handleFetchRandomQuestion = (event: any, categoryValue: number) => {
+        gameManagerService.questionService.fetchRandomQuestionCardByCategory(categoryValue)
+            .then(response => console.log(`${JSON.stringify(response.data)}`));
+    }
 
     /* Fetch all question cards */
     const handleFetchAllQuestionCards = () => {
@@ -87,15 +93,54 @@ const App = () => {
         // console.log(gameManagerService.dieValue);
     }
 
-    const handleDrop = (event: any, pos: number[]) => {
+    const handleDrop = async (event: any, pos: number[], topic: string, cakeSlice: number) => {
         const id = event.dataTransfer.getData('playerId');
         const copyPlayers = [...playerState.players];
+        // eslint-disable-next-line
         const playerIndex = copyPlayers.findIndex(player => player.id == id);
         const copyPlayer: Player = copyPlayers[playerIndex];
 
         copyPlayer.pos = pos;
         copyPlayers[playerIndex] = copyPlayer;
 
+        gameManagerService.playerState = copyPlayers;
+        setPlayerState({players: gameManagerService.playerState});
+
+        let category: number = 0;
+
+        switch (topic) {
+            case 'Topic1':
+            case 'CakeSpace1':
+                category = 0;
+                break;
+            case 'Topic2':
+            case 'CakeSpace2':
+                category = 1;
+                break;
+            case 'Topic3':
+            case 'CakeSpace3':
+                category = 2; break;
+            case 'Topic4':
+            case 'CakeSpace4':
+                category = 3;
+                break;
+        }
+
+        const response: AxiosResponse = await gameManagerService.questionService.fetchRandomQuestionCardByCategory(category);
+
+        /* TODO: Remove after demo */
+        console.log(`Question: ${response.data.question}`);
+        console.log(`Your answer: ${response.data.answers[0].answer}`);
+        console.log(`Your answer is ${response.data.answers[0].correct === 1 ? 'correct' : 'incorrect'}.`);
+
+        switch (cakeSlice) {
+            case 1: copyPlayer.cakeSlice1 = true; break;
+            case 2: copyPlayer.cakeSlice2 = true; break;
+            case 3: copyPlayer.cakeSlice3 = true; break;
+            case 4: copyPlayer.cakeSlice4 = true; break;
+        }
+
+        copyPlayers[playerIndex] = copyPlayer;
         gameManagerService.playerState = copyPlayers;
         setPlayerState({players: gameManagerService.playerState});
     }
@@ -107,7 +152,7 @@ const App = () => {
                     container
                     direction="row"
                     justify="center"
-                    alignItems="center">
+                    alignItems="stretch">
 
                     <Grid item xs={3}>
                         <GameControl players={playerState.players}
@@ -125,7 +170,9 @@ const App = () => {
                     </Grid>
                     <Grid item xs={9}>
                         <GameBoard players={playerState.players}
-                                   handleDrop={handleDrop}/>
+                                   handleDrop={handleDrop}
+                                   onClickFetchRandomQuestion={handleFetchRandomQuestion}
+                                   inGame={inGame}/>
                     </Grid>
 
                 </Grid>

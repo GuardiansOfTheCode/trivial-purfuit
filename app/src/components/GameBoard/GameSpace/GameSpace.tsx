@@ -33,14 +33,25 @@ const GameSpace = (props: any) => {
             return player.pos[0] === props.pos[0] && player.pos[1] === props.pos[1] ?
                 <Box key={player.id}
                      className={'Token Token' + player.id}
-                     draggable={true}
+                     draggable={props.inGame}
                      onDragStart={event => handleDragStart(event, player)}/> : null;
         }) : null;
+
+    let cakeSlice: number = 0;
+    if (props.cakeSlice1) {
+        cakeSlice = 1;
+    } else if (props.cakeSlice2) {
+        cakeSlice = 2;
+    } else if (props.cakeSlice3) {
+        cakeSlice = 3;
+    } else if (props.cakeSlice4) {
+        cakeSlice = 4;
+    }
 
     return (
         <Grid item>
             <Box className={'GameSpace ' + props.topic}
-                 onDrop={event => props.handleDrop(event, props.pos)}
+                 onDrop={event => props.handleDrop(event, props.pos, props.topic, cakeSlice)}
                  onDragOver={event => handleDragOver(event)}>
 
                 {text}
