@@ -1,11 +1,9 @@
 import {Container, Grid} from '@material-ui/core';
-import {AxiosResponse} from 'axios';
-import React, {useState} from 'react';
+import React, { useState} from 'react';
 import {Answer} from '../../common/models/Answer';
 import {Player} from '../../common/models/Player';
 import {Question} from '../../common/models/Question';
 import {QuestionCard} from '../../common/models/QuestionCard';
-import {DEFAULT_PLAYERS} from '../../common/models/states/DefaultStates';
 import {GameManagerService} from '../../common/services/GameManagerService';
 import GameBoard from '../../components/GameBoard/GameBoard';
 import GameControl from '../../components/GameControl/GameControl';
@@ -45,11 +43,6 @@ const App = () => {
             ]
         }
     });
-
-    const handleNextPlayer = () => {
-        gameManagerService.nextPlayer();
-        setCurrentPlayer(gameManagerService.currentPlayer);
-    }
 
     const handleFetchRandomQuestion = (event: any, categoryValue: number) => {
         gameManagerService.questionService.fetchRandomQuestionCardByCategory(categoryValue)
@@ -121,10 +114,6 @@ const App = () => {
 
     const handleInGameToggle = () => {
         setInGame(!inGame);
-        if (!inGame) {
-            gameManagerService.playerState = DEFAULT_PLAYERS;
-            setPlayerState({players: gameManagerService.playerState});
-        }
     };
 
     const handleChangeName = (event: any, id: number) => {
@@ -144,7 +133,10 @@ const App = () => {
         setDieValue(gameManagerService.dieValue);
     };
 
-    const handleDrop = async (event: any, pos: number[], topic: string, cakeSlice: number, currentPlayer: number) => {
+    const handleDrop = async (event: any,
+                              pos: number[],
+                              topic: string,
+                              cakeSlice: number) => {
         const id = event.dataTransfer.getData('playerId');
         const copyPlayers = [...playerState.players];
 
@@ -176,10 +168,12 @@ const App = () => {
             case 'CakeSpace4':
                 category = 3;
                 break;
+            case 'RollAgain':
+                return;
         }
 
         /* Fetch random question */
-        const response: AxiosResponse = await gameManagerService.questionService.fetchRandomQuestionCardByCategory(category);
+        // const response: AxiosResponse = await gameManagerService.questionService.fetchRandomQuestionCardByCategory(category);
 
         switch (cakeSlice) {
             case 1:

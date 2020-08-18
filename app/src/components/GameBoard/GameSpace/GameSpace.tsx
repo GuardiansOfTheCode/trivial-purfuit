@@ -51,7 +51,7 @@ const GameSpace = (props: any) => {
     return (
         <Grid item>
             <Box className={'GameSpace ' + props.topic}
-                 onDrop={event => props.handleDrop(event, props.pos, props.topic, cakeSlice, props.currentPlayer)}
+                 onDrop={event => props.handleDrop(event, props.pos, props.topic, cakeSlice)}
                  onDragOver={event => handleDragOver(event)}>
 
                 {text}

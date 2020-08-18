@@ -8,7 +8,8 @@
     padding: 2%;
     border-style: solid;
     border-width: .5vw;
-    border-color: red;
+    border-color: darkred;
+    background-color: whitesmoke;
 }
 
 .Token2 {
@@ -16,7 +17,8 @@
     padding: 2%;
     border-style: solid;
     border-width: .5vw;
-    border-color: blue;
+    border-color: darkblue;
+    background-color: whitesmoke;
 }
 
 .Token3 {
@@ -24,7 +26,8 @@
     padding: 2%;
     border-style: solid;
     border-width: .5vw;
-    border-color: green;
+    border-color: darkgreen;
+    background-color: whitesmoke;
 }
 
 .Token4 {
@@ -32,5 +35,6 @@
     padding: 2%;
     border-style: solid;
     border-width: .5vw;
-    border-color: orange;
+    border-color: darkorange;
+    background-color: whitesmoke;
 }
