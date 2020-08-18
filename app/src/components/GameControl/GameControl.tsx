@@ -72,13 +72,14 @@ GameControl.propTypes = {
     players: propTypes.array,
     changeName: propTypes.func,
     inGame: propTypes.bool,
+    questionChange: propTypes.func,
     onClick: propTypes.func,
     onClickRollDie: propTypes.func,
     onClickAddQuestion: propTypes.func,
     onClickDeleteQuestion: propTypes.func,
     onClickFetchAll: propTypes.func,
     onClickFetchRandomCard: propTypes.func,
-    onClickUpdateCard: propTypes.func,
+    // onClickUpdateCard: propTypes.func,
     onClickResetDb: propTypes.func,
     dieValue: propTypes.number
 };

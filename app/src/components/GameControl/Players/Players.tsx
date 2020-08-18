@@ -6,9 +6,9 @@ import Player from './Player/Player';
 const Players = (props: any) => {
     return (
         <Grid container
-              direction="row"
-              justify="space-evenly"
-              alignItems="center">
+              direction={'row'}
+              justify={'space-evenly'}
+              alignItems={'center'}>
             {
                 props.players.map((player: any) => {
                     return <Player {...player}
