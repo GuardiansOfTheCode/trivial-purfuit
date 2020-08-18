@@ -122,7 +122,8 @@ GameBoard.propTypes = {
     players: propTypes.array,
     handleDrop: propTypes.func,
     onClickFetchRandomQuestion: propTypes.func,
-    inGame: propTypes.bool
+    inGame: propTypes.bool,
+    currentPlayer: propTypes.number
 };
 
 export default GameBoard;

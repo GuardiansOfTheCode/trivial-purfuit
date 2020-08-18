@@ -7,7 +7,7 @@ import './Player.css';
 const Player = (props: any) => {
     const notInGameComponent =
         <Grid item xs={12}>
-            <Box className={'Player'+props.id}>
+            <Box className={'Player' + props.id}>
                 <p>Name: {props.name}</p>
                 <input type='text'
                        onChange={props.changeName}
@@ -15,7 +15,16 @@ const Player = (props: any) => {
             </Box>
         </Grid>;
 
-    const inGameComponent =
+    const inGameComponent = props.currentPlayer ?
+        <Grid item xs={12}>
+            <Box className={'Player' + props.id + 'Current'}>
+                <p>{props.name}</p>
+                <CakeSlice cakeSlice1={props.cakeSlice1}
+                           cakeSlice2={props.cakeSlice2}
+                           cakeSlice3={props.cakeSlice3}
+                           cakeSlice4={props.cakeSlice4}/>
+            </Box>
+        </Grid> :
         <Grid item xs={12}>
             <Box className={'Player'+props.id}>
                 <p>{props.name}</p>

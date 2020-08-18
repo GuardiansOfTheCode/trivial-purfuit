@@ -16,6 +16,7 @@ const gameManagerService: GameManagerService = GameManagerService.instance;
 
 const App = () => {
     const [playerState, setPlayerState] = useState({players: gameManagerService.playerState});
+    const [currentPlayer, setCurrentPlayer] = useState(gameManagerService.currentPlayer);
     const [dieValue, setDieValue] = useState(gameManagerService.dieValue);
     const [inGame, setInGame] = useState(false);
     const [questionState, setQuestionState] = useState({
@@ -44,7 +45,11 @@ const App = () => {
             ]
         }
     });
-    const [updateQuestionID, setUpdateQuestionID] = useState(-1);
+
+    const handleNextPlayer = () => {
+        gameManagerService.nextPlayer();
+        setCurrentPlayer(gameManagerService.currentPlayer);
+    }
 
     const handleFetchRandomQuestion = (event: any, categoryValue: number) => {
         gameManagerService.questionService.fetchRandomQuestionCardByCategory(categoryValue)
@@ -139,7 +144,7 @@ const App = () => {
         setDieValue(gameManagerService.dieValue);
     };
 
-    const handleDrop = async (event: any, pos: number[], topic: string, cakeSlice: number) => {
+    const handleDrop = async (event: any, pos: number[], topic: string, cakeSlice: number, currentPlayer: number) => {
         const id = event.dataTransfer.getData('playerId');
         const copyPlayers = [...playerState.players];
 
@@ -196,6 +201,9 @@ const App = () => {
         copyPlayers[playerIndex] = copyPlayer;
         gameManagerService.playerState = copyPlayers;
         setPlayerState({players: gameManagerService.playerState});
+
+        gameManagerService.nextPlayer();
+        setCurrentPlayer(gameManagerService.currentPlayer);
     };
 
     return (
@@ -212,6 +220,7 @@ const App = () => {
                                      changeName={handleChangeName}
                                      inGame={inGame}
                                      dieValue={dieValue}
+                                     currentPlayer={currentPlayer}
                                      questionChange={handleQuestionChange}
                                      onClick={handleInGameToggle}
                                      onClickRollDie={handleRollDie}
@@ -226,6 +235,7 @@ const App = () => {
                         <GameBoard players={playerState.players}
                                    handleDrop={handleDrop}
                                    onClickFetchRandomQuestion={handleFetchRandomQuestion}
+                                   currentPlayer={currentPlayer}
                                    inGame={inGame}/>
                     </Grid>
 

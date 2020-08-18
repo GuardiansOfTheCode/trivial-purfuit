@@ -33,7 +33,7 @@ const GameSpace = (props: any) => {
             return player.pos[0] === props.pos[0] && player.pos[1] === props.pos[1] ?
                 <Box key={player.id}
                      className={'Token Token' + player.id}
-                     draggable={props.inGame}
+                     draggable={props.inGame && player.id === props.currentPlayer}
                      onDragStart={event => handleDragStart(event, player)}/> : null;
         }) : null;
 
@@ -51,7 +51,7 @@ const GameSpace = (props: any) => {
     return (
         <Grid item>
             <Box className={'GameSpace ' + props.topic}
-                 onDrop={event => props.handleDrop(event, props.pos, props.topic, cakeSlice)}
+                 onDrop={event => props.handleDrop(event, props.pos, props.topic, cakeSlice, props.currentPlayer)}
                  onDragOver={event => handleDragOver(event)}>
 
                 {text}
@@ -72,7 +72,8 @@ GameSpace.propTypes = {
     cakeSlice2: propTypes.bool,
     cakeSlice3: propTypes.bool,
     cakeSlice4: propTypes.bool,
-    handleDrop: propTypes.func
+    handleDrop: propTypes.func,
+    currentPlayer: propTypes.number
 };
 
 export default GameSpace;

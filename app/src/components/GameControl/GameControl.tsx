@@ -56,7 +56,8 @@ const GameControl = (props: any) => {
                     <h1>Trivial Purfuit</h1>
                     <Players players={props.players}
                              changeName={props.changeName}
-                             inGame={props.inGame}/>
+                             inGame={props.inGame}
+                             currentPlayer={props.currentPlayer}/>
                     {dieValue}
                 </Grid>
 
@@ -73,6 +74,7 @@ GameControl.propTypes = {
     changeName: propTypes.func,
     inGame: propTypes.bool,
     questionChange: propTypes.func,
+    currentPlayer: propTypes.number,
     onClick: propTypes.func,
     onClickRollDie: propTypes.func,
     onClickAddQuestion: propTypes.func,
