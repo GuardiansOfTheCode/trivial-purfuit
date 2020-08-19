@@ -22,6 +22,8 @@ const App = () => {
     const [openFetchAllModal, setOpenFetchAllModal] = useState(false);
     const [allFetchedQuestions, setAllFetchedQuestions] = useState('');
     const [openQuestionModal, setOpenQuestionModal] = useState(false);
+    const [openWinModal, setOpenWinModal] = useState(false);
+    const [winner, setWinner] = useState('');
     const [cakeSlice, setCakeSlice] = useState(-1);
     const [addQuestionState, setAddQuestionState] = useState({
         questionCard: {
@@ -72,6 +74,14 @@ const App = () => {
     const handleCloseQuestionModal = () => {
         setOpenQuestionModal(false);
     };
+
+    const handleOpenWinModal = () => {
+        setOpenWinModal(true);
+    }
+
+    const handleCloseWinModal = () => {
+        setOpenWinModal(false);
+    }
 
     const handleFetchRandomQuestion = (event: any, categoryValue: number) => {
         gameManagerService.questionService.fetchRandomQuestionCardByCategory(categoryValue)
@@ -223,7 +233,9 @@ const App = () => {
                 return;
             case 'Start':
                 if (playerState.players[currentPlayer - 1].totalCakeSlices === 4) {
-                    console.log(`${playerState.players[currentPlayer - 1].name} wins!!!`);
+                    setWinner(playerState.players[currentPlayer - 1].name);
+                    // console.log(`${playerState.players[currentPlayer - 1].name} wins!!!`);
+                    handleOpenWinModal();
                     handleInGameToggle();
                     return;
                 }
@@ -353,6 +365,18 @@ const App = () => {
                                         );
                                     })}
                                 </ul>
+                            </Paper>
+                        </Modal>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Modal
+                            open={openWinModal}
+                            onClose={handleCloseWinModal}
+                            aria-labelledby={'title'}
+                            aria-describedby={'description'}>
+                            <Paper>
+                                <h1>Winner Winner Chicken Dinner!!!</h1>
+                                <h2>{winner} has won Trivial Purfuit</h2>
                             </Paper>
                         </Modal>
                     </Grid>
