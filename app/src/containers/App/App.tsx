@@ -1,5 +1,6 @@
-import {Container, Grid} from '@material-ui/core';
-import React, { useState} from 'react';
+import {Container, Grid, Modal, Paper} from '@material-ui/core';
+import {AxiosResponse} from 'axios';
+import React, {useState} from 'react';
 import {Answer} from '../../common/models/Answer';
 import {Player} from '../../common/models/Player';
 import {Question} from '../../common/models/Question';
@@ -15,9 +16,14 @@ const gameManagerService: GameManagerService = GameManagerService.instance;
 const App = () => {
     const [playerState, setPlayerState] = useState({players: gameManagerService.playerState});
     const [currentPlayer, setCurrentPlayer] = useState(gameManagerService.currentPlayer);
+    const [currentQuestion, setCurrentQuestion] = useState(new QuestionCard(new Question(0, ''), [new Answer('', false)]));
     const [dieValue, setDieValue] = useState(gameManagerService.dieValue);
     const [inGame, setInGame] = useState(false);
-    const [questionState, setQuestionState] = useState({
+    const [openFetchAllModal, setOpenFetchAllModal] = useState(false);
+    const [allFetchedQuestions, setAllFetchedQuestions] = useState('');
+    const [openQuestionModal, setOpenQuestionModal] = useState(false);
+    const [cakeSlice, setCakeSlice] = useState(-1);
+    const [addQuestionState, setAddQuestionState] = useState({
         questionCard: {
             question: {
                 category: -1,
@@ -43,6 +49,26 @@ const App = () => {
             ]
         }
     });
+    const [updateQuestionState, setUpdateQuestionState] = useState({id: -1, questionCard: addQuestionState.questionCard});
+    const [deleteQuestionIDState, setDeleteQuestionIDState] = useState(-1);
+
+    const handleOpenFetchAllModal = async () => {
+        const response: AxiosResponse = await gameManagerService.questionService.fetchAllQuestionCards();
+        setOpenFetchAllModal(true);
+        setAllFetchedQuestions(JSON.stringify(response.data));
+    }
+
+    const handleCloseFetchAllModal = () => {
+        setOpenFetchAllModal(false);
+    }
+
+    const handleOpenQuestionModal = () => {
+        setOpenQuestionModal(true);
+    }
+
+    const handleCloseQuestionModal = () => {
+        setOpenQuestionModal(false);
+    }
 
     const handleFetchRandomQuestion = (event: any, categoryValue: number) => {
         gameManagerService.questionService.fetchRandomQuestionCardByCategory(categoryValue)
@@ -63,27 +89,27 @@ const App = () => {
 
     /* Add list of Question Cards */
     const handleAddQuestion = () => {
-        const question: Question = questionState.questionCard.question;
+        const question: Question = addQuestionState.questionCard.question;
         if (question.category < 1 || question.category > 5) {
             return;
         }
-        const answers: Answer[] = questionState.questionCard.answers;
+        const answers: Answer[] = addQuestionState.questionCard.answers;
         const questionCard: QuestionCard = new QuestionCard(question, answers);
 
         gameManagerService.questionService.addQuestionCards([questionCard])
             .then(response => console.log(`${JSON.stringify(response.data)}`));
     };
 
-    // const handleUpdateQuestionCard = () => {
-    //     const question: Question = questionState.questionCard.question;
-    //     if (question.category < 1 || question.category > 5) {
-    //         return;
-    //     }
-    //     const answers: Answer[] = questionState.questionCard.answers;
-    //     const questionCard: QuestionCard = new QuestionCard(question, answers);
-    //     gameManagerService.questionService.updateQuestionCard(updateQuestionID, questionCard)
-    //         .then(response => console.log(`${JSON.stringify(response.data)}`));
-    // };
+    /* Update Question */
+    const handleUpdateQuestion = () => {
+        const question: Question = updateQuestionState.questionCard.question;
+        if (question.category < 1 || question.category > 5) {
+            return;
+        }
+
+        gameManagerService.questionService.updateQuestionCard(updateQuestionState.id, updateQuestionState.questionCard)
+            .then(response => console.log(`${JSON.stringify(response.data)}`));
+    }
 
     /* Reset db */
     const handleResetDb = () => {
@@ -93,11 +119,15 @@ const App = () => {
 
     /* Delete card by id */
     const handleDeleteQuestion = () => {
-        gameManagerService.questionService.deleteQuestionCardById(42)
+        gameManagerService.questionService.deleteQuestionCardById(deleteQuestionIDState)
             .then(response => console.log(`${JSON.stringify(response.data)}`));
     };
 
-    const handleQuestionChange = (event: any) => {
+    const handleDeleteQuestionIDChange = (event: any) => {
+        setDeleteQuestionIDState(event.target.value);
+    }
+
+    const handleAddQuestionChange = (event: any) => {
         const newQuestion: string[] = event.target.value.split(new RegExp('[.?!_]'));
 
         if (newQuestion.length === 6) { /* Add Question */
@@ -108,7 +138,24 @@ const App = () => {
             answers.push(new Answer(newQuestion[4], false));
             answers.push(new Answer(newQuestion[5], false));
             const questionCard: QuestionCard = new QuestionCard(question, answers);
-            setQuestionState({questionCard: questionCard});
+            setAddQuestionState({questionCard: questionCard});
+        }
+    }
+
+    const handleUpdateQuestionChange = (event: any) => {
+        const updateQuestion: string[] = event.target.value.split(new RegExp('[.?!_]'));
+
+        if (updateQuestion.length === 7) { /* Add Question */
+            const id: number = parseInt(updateQuestion[0]);
+            const question: Question = new Question(parseInt(updateQuestion[1]), updateQuestion[2]);
+            const answers: Answer[] = [];
+            answers.push(new Answer(updateQuestion[3], true));
+            answers.push(new Answer(updateQuestion[4], false));
+            answers.push(new Answer(updateQuestion[5], false));
+            answers.push(new Answer(updateQuestion[6], false));
+            const questionCard: QuestionCard = new QuestionCard(question, answers);
+            setUpdateQuestionState({id: id, questionCard: questionCard});
+            console.log(JSON.stringify(updateQuestionState));
         }
     }
 
@@ -170,35 +217,65 @@ const App = () => {
                 break;
             case 'RollAgain':
                 return;
+            case 'Start':
+                if (playerState.players[currentPlayer - 1].totalCakeSlices === 4) {
+                    console.log(`${playerState.players[currentPlayer - 1].name} wins!!!`);
+                    handleInGameToggle();
+                    return;
+                }
         }
 
         /* Fetch random question */
-        // const response: AxiosResponse = await gameManagerService.questionService.fetchRandomQuestionCardByCategory(category);
+        const response: AxiosResponse = await gameManagerService.questionService.fetchRandomQuestionCardByCategory(category);
+        const question: Question = new Question(response.data.category, response.data.question);
+        const answers: Answer[] = [];
 
+        for (const answer of response.data.answers) {
+            answers.push(new Answer(answer.answer, answer.correct !== 0));
+        }
+        const questionCard: QuestionCard = new QuestionCard(question, answers);
+        setCurrentQuestion(questionCard);
+        setCakeSlice(cakeSlice);
+        if (topic !== 'Start') {
+            handleOpenQuestionModal();
+        }
+    };
+
+    const handleAnswerSelected = (event: any, correct: boolean) => {
+        if (!correct) {
+            gameManagerService.nextPlayer();
+            setCurrentPlayer(gameManagerService.currentPlayer);
+            handleCloseQuestionModal();
+        }
+
+        const copyPlayers = [...playerState.players];
+        const copyPlayer = copyPlayers[currentPlayer - 1];
         switch (cakeSlice) {
             case 1:
                 copyPlayer.cakeSlice1 = true;
+                copyPlayer.totalCakeSlices++;
                 break;
             case 2:
                 copyPlayer.cakeSlice2 = true;
+                copyPlayer.totalCakeSlices++;
                 break;
             case 3:
                 copyPlayer.cakeSlice3 = true;
+                copyPlayer.totalCakeSlices++;
                 break;
             case 4:
                 copyPlayer.cakeSlice4 = true;
+                copyPlayer.totalCakeSlices++;
                 break;
             default:
                 break;
         }
 
-        copyPlayers[playerIndex] = copyPlayer;
+        copyPlayers[currentPlayer - 1] = copyPlayer;
         gameManagerService.playerState = copyPlayers;
         setPlayerState({players: gameManagerService.playerState});
-
-        gameManagerService.nextPlayer();
-        setCurrentPlayer(gameManagerService.currentPlayer);
-    };
+        handleCloseQuestionModal();
+    }
 
     return (
         <Container className={'App'}>
@@ -215,15 +292,20 @@ const App = () => {
                                      inGame={inGame}
                                      dieValue={dieValue}
                                      currentPlayer={currentPlayer}
-                                     questionChange={handleQuestionChange}
+                                     addQuestionChange={handleAddQuestionChange}
+                                     updateQuestionChange={handleUpdateQuestionChange}
+                                     deleteQuestionIDChange={handleDeleteQuestionIDChange}
+                                     // currentQuestion={currentQuestion}
                                      onClick={handleInGameToggle}
                                      onClickRollDie={handleRollDie}
                                      onClickAddQuestion={handleAddQuestion}
                                      onClickDeleteQuestion={handleDeleteQuestion}
                                      onClickFetchAll={handleFetchAllQuestionCards}
                                      onClickFetchRandomCard={handleFetchRandomQuestionCard}
-                                     // onClickUpdateCard={handleUpdateQuestionCard}
-                                     onClickResetDb={handleResetDb}/>
+                                     onClickResetDb={handleResetDb}
+                                     onClickUpdateQuestion={handleUpdateQuestion}
+                                     handleOpenFetchAllModal={handleOpenFetchAllModal}
+                                     handleCloseFetchAllModal={handleCloseFetchAllModal}/>
                     </Grid>
                     <Grid item xs={9}>
                         <GameBoard players={playerState.players}
@@ -231,6 +313,43 @@ const App = () => {
                                    onClickFetchRandomQuestion={handleFetchRandomQuestion}
                                    currentPlayer={currentPlayer}
                                    inGame={inGame}/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Modal
+                            open={openFetchAllModal}
+                            onClose={handleCloseFetchAllModal}
+                            aria-labelledby={'title'}
+                            aria-describedby={'description'}>
+                            <Paper>
+                                <h2 id={'title'}>All Current Questions</h2>
+                                <p id={'description'}>
+                                    {allFetchedQuestions}
+                                </p>
+                            </Paper>
+                        </Modal>
+                    </Grid>
+
+                    <Grid item xs={12}>
+                        <Modal
+                            open={openQuestionModal}
+                            onClose={handleCloseQuestionModal}
+                            aria-labelledby={'title'}
+                            aria-describedby={'description'}>
+                            <Paper>
+                                <h2>{currentQuestion.question.question}</h2>
+                                <ul>
+                                    {currentQuestion.answers.map((answer: Answer) => {
+                                        return (
+                                            <li
+                                                key={answer.answer}>
+                                                <input type={'radio'}
+                                                       onChange={(event: any) => {handleAnswerSelected(event, answer.correct)}}/>
+                                                {answer.answer}
+                                            </li>)
+                                    })}
+                                </ul>
+                            </Paper>
+                        </Modal>
                     </Grid>
 
                 </Grid>

@@ -12,23 +12,60 @@ const Question = (props: any) => {
                     <TextField
                         id={'addQuestion'}
                         label={'New Question'}
+                        placeholder={'INT.STR.STR.STR.STR'}
                         multiline
                         variant={'outlined'}
-                        onChange={props.questionChange}/>
-                        <Button variant={'contained'} type={'submit'}>
+                        onChange={props.addQuestionChange}/>
+                        <Button variant={'contained'}
+                                type={'submit'}>
                             Add Question
                         </Button>
                 </form>
             </Grid>
 
             <Grid item xs={12}>
-                <Button variant={'contained'} onClick={props.onClickFetchAll}>
-                    Test Fetch All Questions
+                <form onSubmit={props.onClickUpdateQuestion}>
+                    <TextField
+                        id={'updateQuestion'}
+                        label={'Update Question'}
+                        placeholder={'INT.INT.STR.STR.STR.STR'}
+                        multiline
+                        variant={'outlined'}
+                        onChange={props.updateQuestionChange}/>
+                    <Button variant={'contained'}
+                            type={'submit'}>
+                        Update Question
+                    </Button>
+                </form>
+            </Grid>
+
+            <Grid item xs={12}>
+                <form onSubmit={props.onClickDeleteQuestion}>
+                    <TextField
+                        id={'deleteQuestion'}
+                        label={'Delete Question'}
+                        placeholder={'Enter Question ID'}
+                        multiline
+                        variant={'outlined'}
+                        onChange={props.deleteQuestionIDChange}/>
+                    <Button variant={'contained'}
+                            type={'submit'}>
+                        Delete Question
+                    </Button>
+                </form>
+            </Grid>
+
+            <Grid item xs={12}>
+                <Button variant={'contained'}
+                        onClick={props.handleOpenFetchAllModal}>
+                    View All Questions
                 </Button>
             </Grid>
+
             <Grid item xs={12}>
-                <Button variant={'contained'} onClick={props.onClickResetDb}>
-                    Test Reset Database Tables
+                <Button variant={'contained'}
+                        onClick={props.onClickResetDb}>
+                    Reset Database Tables
                 </Button>
             </Grid>
         </Grid>
@@ -36,9 +73,14 @@ const Question = (props: any) => {
 };
 
 Question.propTypes = {
-    questionChange: propTypes.func,
+    // currentQuestion: propTypes.any,
+    addQuestionChange: propTypes.func,
+    updateQuestionChange: propTypes.func,
+    deleteQuestionIDChange: propTypes.func,
     onClickAddQuestion: propTypes.func,
-    onClickUpdateCard: propTypes.func
+    onClickUpdateQuestion: propTypes.func,
+    handleOpenFetchAllModal: propTypes.func,
+    handleCloseFetchAllModal: propTypes.func
 }
 
 export default Question;

@@ -11,6 +11,7 @@ import Question from './Question/Question';
  * @constructor
  */
 const GameControl = (props: any) => {
+    const currentQuestion = props.currentQuestion != null ? props.currentQuestion : '';
     const startQuitButton = !props.inGame ?
         <Grid item xs={12}>
             <Button variant={'contained'}
@@ -34,6 +35,9 @@ const GameControl = (props: any) => {
                         onClick={props.onClickRollDie}>
                     Roll Die
                 </Button>
+            </Grid>
+            <Grid item xs={12}>
+                {currentQuestion}
             </Grid>
         </Grid>;
 
@@ -66,24 +70,29 @@ const GameControl = (props: any) => {
 
             </Grid>
         </Paper>
-    )
+    );
 }
 
 GameControl.propTypes = {
     players: propTypes.array,
     changeName: propTypes.func,
     inGame: propTypes.bool,
-    questionChange: propTypes.func,
+    addQuestionChange: propTypes.func,
+    updateQuestionChange: propTypes.func,
+    deleteQuestionIDChange: propTypes.func,
     currentPlayer: propTypes.number,
+    // currentQuestion: propTypes.any,
     onClick: propTypes.func,
     onClickRollDie: propTypes.func,
     onClickAddQuestion: propTypes.func,
+    onClickUpdateQuestion: propTypes.func,
     onClickDeleteQuestion: propTypes.func,
     onClickFetchAll: propTypes.func,
     onClickFetchRandomCard: propTypes.func,
-    // onClickUpdateCard: propTypes.func,
     onClickResetDb: propTypes.func,
-    dieValue: propTypes.number
+    dieValue: propTypes.number,
+    handleOpenFetchAllModal: propTypes.func,
+    handleCloseFetchAllModal: propTypes.func
 };
 
 export default GameControl;

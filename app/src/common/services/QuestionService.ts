@@ -49,11 +49,30 @@ export class QuestionService {
         return await axios.post(QuestionService.BASE_URL + '/cards', request);
     }
 
+    /* Does not work properly, need to change how db service works.
+       Currently it requires knowing the ids of each answer.
+       Not impossible to implement, just not worth the time right now. */
     public async updateQuestionCard(id: number, questionCard: QuestionCard): Promise<AxiosResponse> {
-        const request: any = {...questionCard};
-        request.id = id;
+        await this.addQuestionCards([questionCard]);
+        return await this.deleteQuestionCardById(id);
 
-        return await axios.put(QuestionService.BASE_URL + '/card', request);
+        // let answers = [];
+        //
+        // for (let i = 0; i < questionCard.answers.length; i++) {
+        //     answers.push({
+        //         id: i,
+        //         answer: questionCard.answers[i].answer,
+        //         correct: questionCard.answers[i].correct ? 1 : 0
+        //     });
+        // }
+        //
+        // const request = {
+        //     id: id,
+        //     question: questionCard.question.question,
+        //     answers: answers
+        // }
+        //
+        // return await axios.put(QuestionService.BASE_URL + '/card', request);
     }
 
     public async deleteQuestionCardById(id: number): Promise<AxiosResponse> {

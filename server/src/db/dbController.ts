@@ -192,7 +192,7 @@ export const RemoveCards = async (req: Request, res: Response) =>
 export const UpdateCard = async (req: Request, res: Response) =>
 {
    log("---------------")
-   log("UpodateCard")
+   log("UpdateCard")
    let card: QuestionCard = req.body
    knex.transaction( (trx:any) =>{
       return trx(tableQuestions)
