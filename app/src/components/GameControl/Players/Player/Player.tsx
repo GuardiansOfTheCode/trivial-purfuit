@@ -26,7 +26,7 @@ const Player = (props: any) => {
             </Box>
         </Grid> :
         <Grid item xs={12}>
-            <Box className={'Player'+props.id}>
+            <Box className={'Player' + props.id}>
                 <p>{props.name}</p>
                 <CakeSlice cakeSlice1={props.cakeSlice1}
                            cakeSlice2={props.cakeSlice2}

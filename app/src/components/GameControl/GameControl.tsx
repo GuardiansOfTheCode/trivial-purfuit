@@ -71,7 +71,7 @@ const GameControl = (props: any) => {
             </Grid>
         </Paper>
     );
-}
+};
 
 GameControl.propTypes = {
     players: propTypes.array,

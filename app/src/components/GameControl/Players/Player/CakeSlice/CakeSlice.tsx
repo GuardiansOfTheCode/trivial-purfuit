@@ -29,13 +29,13 @@ const CakeSlice = (props: any) => {
             {slice4}
         </Grid>
     );
-}
+};
 
 CakeSlice.propTypes = {
     cakeSlice1: propTypes.bool,
     cakeSlice2: propTypes.bool,
     cakeSlice3: propTypes.bool,
-    cakeSlice4: propTypes.bool,
-}
+    cakeSlice4: propTypes.bool
+};
 
 export default CakeSlice;

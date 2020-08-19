@@ -49,26 +49,29 @@ const App = () => {
             ]
         }
     });
-    const [updateQuestionState, setUpdateQuestionState] = useState({id: -1, questionCard: addQuestionState.questionCard});
+    const [updateQuestionState, setUpdateQuestionState] = useState({
+        id: -1,
+        questionCard: addQuestionState.questionCard
+    });
     const [deleteQuestionIDState, setDeleteQuestionIDState] = useState(-1);
 
     const handleOpenFetchAllModal = async () => {
         const response: AxiosResponse = await gameManagerService.questionService.fetchAllQuestionCards();
         setOpenFetchAllModal(true);
         setAllFetchedQuestions(JSON.stringify(response.data));
-    }
+    };
 
     const handleCloseFetchAllModal = () => {
         setOpenFetchAllModal(false);
-    }
+    };
 
     const handleOpenQuestionModal = () => {
         setOpenQuestionModal(true);
-    }
+    };
 
     const handleCloseQuestionModal = () => {
         setOpenQuestionModal(false);
-    }
+    };
 
     const handleFetchRandomQuestion = (event: any, categoryValue: number) => {
         gameManagerService.questionService.fetchRandomQuestionCardByCategory(categoryValue)
@@ -109,7 +112,7 @@ const App = () => {
 
         gameManagerService.questionService.updateQuestionCard(updateQuestionState.id, updateQuestionState.questionCard)
             .then(response => console.log(`${JSON.stringify(response.data)}`));
-    }
+    };
 
     /* Reset db */
     const handleResetDb = () => {
@@ -125,7 +128,7 @@ const App = () => {
 
     const handleDeleteQuestionIDChange = (event: any) => {
         setDeleteQuestionIDState(event.target.value);
-    }
+    };
 
     const handleAddQuestionChange = (event: any) => {
         const newQuestion: string[] = event.target.value.split(new RegExp('[.?!_]'));
@@ -140,7 +143,7 @@ const App = () => {
             const questionCard: QuestionCard = new QuestionCard(question, answers);
             setAddQuestionState({questionCard: questionCard});
         }
-    }
+    };
 
     const handleUpdateQuestionChange = (event: any) => {
         const updateQuestion: string[] = event.target.value.split(new RegExp('[.?!_]'));
@@ -157,7 +160,7 @@ const App = () => {
             setUpdateQuestionState({id: id, questionCard: questionCard});
             console.log(JSON.stringify(updateQuestionState));
         }
-    }
+    };
 
     const handleInGameToggle = () => {
         setInGame(!inGame);
@@ -210,7 +213,8 @@ const App = () => {
                 break;
             case 'Topic3':
             case 'CakeSpace3':
-                category = 2; break;
+                category = 2;
+                break;
             case 'Topic4':
             case 'CakeSpace4':
                 category = 3;
@@ -275,7 +279,7 @@ const App = () => {
         gameManagerService.playerState = copyPlayers;
         setPlayerState({players: gameManagerService.playerState});
         handleCloseQuestionModal();
-    }
+    };
 
     return (
         <Container className={'App'}>
@@ -295,7 +299,7 @@ const App = () => {
                                      addQuestionChange={handleAddQuestionChange}
                                      updateQuestionChange={handleUpdateQuestionChange}
                                      deleteQuestionIDChange={handleDeleteQuestionIDChange}
-                                     // currentQuestion={currentQuestion}
+                            // currentQuestion={currentQuestion}
                                      onClick={handleInGameToggle}
                                      onClickRollDie={handleRollDie}
                                      onClickAddQuestion={handleAddQuestion}
@@ -343,9 +347,11 @@ const App = () => {
                                             <li
                                                 key={answer.answer}>
                                                 <input type={'radio'}
-                                                       onChange={(event: any) => {handleAnswerSelected(event, answer.correct)}}/>
+                                                       onChange={(event: any) => {
+                                                           handleAnswerSelected(event, answer.correct);
+                                                       }}/>
                                                 {answer.answer}
-                                            </li>)
+                                            </li>);
                                     })}
                                 </ul>
                             </Paper>

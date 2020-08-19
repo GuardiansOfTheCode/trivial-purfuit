@@ -22,11 +22,11 @@ const GameSpace = (props: any) => {
 
     const handleDragStart = (event: any, player: any) => {
         event.dataTransfer.setData('playerId', player.id);
-    }
+    };
 
     const handleDragOver = (event: any) => {
         event.preventDefault();
-    }
+    };
 
     const tokens = props.players !== undefined ?
         props.players.map((player: any) => {

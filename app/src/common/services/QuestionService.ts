@@ -40,7 +40,7 @@ export class QuestionService {
                 card.answers.push({
                     'answer': answer.answer,
                     'correct': answer.correct
-                })
+                });
             });
 
             request.push(card);

@@ -16,10 +16,10 @@ const Question = (props: any) => {
                         multiline
                         variant={'outlined'}
                         onChange={props.addQuestionChange}/>
-                        <Button variant={'contained'}
-                                type={'submit'}>
-                            Add Question
-                        </Button>
+                    <Button variant={'contained'}
+                            type={'submit'}>
+                        Add Question
+                    </Button>
                 </form>
             </Grid>
 
@@ -81,6 +81,6 @@ Question.propTypes = {
     onClickUpdateQuestion: propTypes.func,
     handleOpenFetchAllModal: propTypes.func,
     handleCloseFetchAllModal: propTypes.func
-}
+};
 
 export default Question;
