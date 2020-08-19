@@ -332,7 +332,6 @@ const App = () => {
                             </Paper>
                         </Modal>
                     </Grid>
-
                     <Grid item xs={12}>
                         <Modal
                             open={openQuestionModal}
@@ -351,13 +350,13 @@ const App = () => {
                                                            handleAnswerSelected(event, answer.correct);
                                                        }}/>
                                                 {answer.answer}
-                                            </li>);
+                                            </li>
+                                        );
                                     })}
                                 </ul>
                             </Paper>
                         </Modal>
                     </Grid>
-
                 </Grid>
             </Layout>
         </Container>
