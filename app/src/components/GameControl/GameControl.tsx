@@ -81,7 +81,6 @@ GameControl.propTypes = {
     updateQuestionChange: propTypes.func,
     deleteQuestionIDChange: propTypes.func,
     currentPlayer: propTypes.number,
-    // currentQuestion: propTypes.any,
     onClick: propTypes.func,
     onClickRollDie: propTypes.func,
     onClickAddQuestion: propTypes.func,

@@ -1,22 +1,29 @@
 // Import express
-import  {Router} from 'express'
+import {Router} from 'express';
 
 // Import controller
-import {GetAllQuestionCards, GetQuestionCard, AddQuestionCards, ResetTables, RemoveCards, UpdateCard} from '../db/dbController'
+import {
+    AddQuestionCards,
+    GetAllQuestionCards,
+    GetQuestionCard,
+    RemoveCards,
+    ResetTables,
+    UpdateCard
+} from '../db/dbController';
 
 // Create router
-export const router = Router({ strict: true});
+export const router = Router({strict: true});
 
-router.get('/all', GetAllQuestionCards)
+router.get('/all', GetAllQuestionCards);
 
-router.get('/card', GetQuestionCard)
+router.get('/card', GetQuestionCard);
 
-router.post('/card', GetQuestionCard)
+router.post('/card', GetQuestionCard);
 
-router.post('/cards', AddQuestionCards)
+router.post('/cards', AddQuestionCards);
 
-router.put('/reset', ResetTables)
+router.put('/reset', ResetTables);
 
-router.delete('/delete', RemoveCards)
+router.delete('/delete', RemoveCards);
 
-router.put('/card', UpdateCard)
+router.put('/card', UpdateCard);

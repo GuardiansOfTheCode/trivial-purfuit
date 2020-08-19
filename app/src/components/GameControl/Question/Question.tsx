@@ -12,7 +12,7 @@ const Question = (props: any) => {
                     <TextField
                         id={'addQuestion'}
                         label={'New Question'}
-                        placeholder={'INT.STR.STR.STR.STR'}
+                        placeholder={'0-3.STR.STR.STR.STR'}
                         multiline
                         variant={'outlined'}
                         onChange={props.addQuestionChange}/>
@@ -28,7 +28,7 @@ const Question = (props: any) => {
                     <TextField
                         id={'updateQuestion'}
                         label={'Update Question'}
-                        placeholder={'INT.INT.STR.STR.STR.STR'}
+                        placeholder={'INT.0-3.STR.STR.STR.STR'}
                         multiline
                         variant={'outlined'}
                         onChange={props.updateQuestionChange}/>
@@ -73,7 +73,6 @@ const Question = (props: any) => {
 };
 
 Question.propTypes = {
-    // currentQuestion: propTypes.any,
     addQuestionChange: propTypes.func,
     updateQuestionChange: propTypes.func,
     deleteQuestionIDChange: propTypes.func,

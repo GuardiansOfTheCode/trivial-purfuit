@@ -299,7 +299,6 @@ const App = () => {
                                      addQuestionChange={handleAddQuestionChange}
                                      updateQuestionChange={handleUpdateQuestionChange}
                                      deleteQuestionIDChange={handleDeleteQuestionIDChange}
-                            // currentQuestion={currentQuestion}
                                      onClick={handleInGameToggle}
                                      onClickRollDie={handleRollDie}
                                      onClickAddQuestion={handleAddQuestion}
